@@ -54,7 +54,7 @@ CREATE TABLE `tuser` (
   `firstName` varchar(45) NOT NULL,
   `lastName` varchar(45) NOT NULL,
   `gender` enum('M','F') NOT NULL,
-  `date_of_birth` datetime NOT NULL,
+  `date_of_birth` date NOT NULL,
   `account_made` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -66,7 +66,7 @@ CREATE TABLE `tuser` (
 
 LOCK TABLES `tuser` WRITE;
 /*!40000 ALTER TABLE `tuser` DISABLE KEYS */;
-INSERT INTO `tuser` VALUES ('admin','a','a','M','2003-10-30 00:00:00','2023-07-07 19:38:52');
+INSERT INTO `tuser` VALUES ('admin','a','a','M','2003-10-30','2023-07-07 19:38:52');
 /*!40000 ALTER TABLE `tuser` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -79,4 +79,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-07 19:41:00
+-- Dump completed on 2023-07-08 11:42:30
