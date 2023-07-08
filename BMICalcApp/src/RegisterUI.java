@@ -37,70 +37,56 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextFieldLName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        datePickerBirth = new com.github.lgooddatepicker.components.DatePicker();
+        jDatePickerBirth = new com.github.lgooddatepicker.components.DatePicker();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel2.setText("E-Mail");
+        jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel3.setText("Password");
+        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jTextFieldPassword.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jButtonlogin.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonlogin.setText("Log In");
+        jButtonlogin.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel4.setText("Already have an account?");
+        jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
+        jLabel1.setText("BMI Calculator");
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel1.setText("BMI Calculator");
 
-        jButtonregister.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonregister.setText("Register");
+        jButtonregister.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonregister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonregisterActionPerformed(evt);
+            }
+        });
 
         jTextFieldEmail.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jTextFieldFName.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel5.setText("First Name");
+        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jTextFieldLName.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel6.setText("Last Name");
+        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel8.setText("Date of Birth");
+        jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldFName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel2))
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jLabel6)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldLName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(datePickerBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -122,6 +108,20 @@ public class RegisterUI extends javax.swing.JFrame {
                         .addGap(107, 107, 107))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldFName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabel2))
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jLabel6))
+                            .addComponent(jTextFieldLName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDatePickerBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jLabel1))
@@ -150,7 +150,7 @@ public class RegisterUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(datePickerBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jDatePickerBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -166,6 +166,11 @@ public class RegisterUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
+        // TODO add your handling code here:
+        System.out.println(jDatePickerBirth.getDate());
+    }//GEN-LAST:event_jButtonregisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,9 +208,9 @@ public class RegisterUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.github.lgooddatepicker.components.DatePicker datePickerBirth;
     private javax.swing.JButton jButtonlogin;
     private javax.swing.JButton jButtonregister;
+    private com.github.lgooddatepicker.components.DatePicker jDatePickerBirth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
