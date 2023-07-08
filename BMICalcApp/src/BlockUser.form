@@ -112,11 +112,14 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButtonHome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Home"/>
+        <Property name="text" type="java.lang.String" value="Return"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHomeActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
