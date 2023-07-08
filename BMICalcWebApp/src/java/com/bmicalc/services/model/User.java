@@ -131,7 +131,7 @@ public class User extends ConnModel {
                 return true;
             }
         } catch (Exception e) {
-            System.out.println("Error in insertData: " + e);
+            System.out.println("Error in User.insertData: " + e);
             return false;
         }
         return false;
@@ -161,7 +161,7 @@ public class User extends ConnModel {
             return user;
 
         } catch (Exception e) {
-            System.out.println("Error in viewData: " + e);
+            System.out.println("Error in User.viewData: " + e);
         }
         return null;
     }
@@ -188,7 +188,7 @@ public class User extends ConnModel {
             }
 
         } catch (Exception e) {
-            System.out.println("Error in checkLogin: " + e);
+            System.out.println("Error in User.checkLogin: " + e);
         }
         return new User();
     }
@@ -217,7 +217,7 @@ public class User extends ConnModel {
                 sql.close();
             }
         } catch (Exception e) {
-            System.out.println("Error in updateData: " + e);
+            System.out.println("Error in User.updateData: " + e);
         }
     }
     
@@ -232,7 +232,7 @@ public class User extends ConnModel {
                 sql.close();
             }
         } catch (Exception e) {
-            System.out.println("Error in deleteData: " + e);
+            System.out.println("Error in User.deleteData: " + e);
         }
     }
 }

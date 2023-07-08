@@ -95,7 +95,7 @@ public class BmiResult extends ConnModel {
                 return true;
             }
         } catch (Exception e) {
-            System.out.println("Error in insertData: " + e);
+            System.out.println("Error in BmiResult.insertData: " + e);
             return false;
         }
         return false;
@@ -125,7 +125,7 @@ public class BmiResult extends ConnModel {
             return listResult;
 
         } catch (Exception e) {
-            System.out.println("Error in viewData: " + e);
+            System.out.println("Error in BmiResult.viewData: " + e);
         }
         return null;
     }
