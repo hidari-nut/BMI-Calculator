@@ -39,9 +39,9 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jDatePickerBirth = new com.github.lgooddatepicker.components.DatePicker();
         jLabel8 = new javax.swing.JLabel();
-        jCheckBoxMale = new javax.swing.JCheckBox();
-        jCheckBoxMale1 = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
+        jRadioButtonMale = new javax.swing.JRadioButton();
+        jRadioButtonFemale = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,14 +86,14 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel8.setText("Date of Birth");
         jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jCheckBoxMale.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jCheckBoxMale.setText("Female");
-
-        jCheckBoxMale1.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jCheckBoxMale1.setText("Male");
-
-        jLabel7.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel7.setText("Gender");
+        jLabel7.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+
+        jRadioButtonMale.setText("Male");
+        jRadioButtonMale.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+
+        jRadioButtonFemale.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jRadioButtonFemale.setText("Female");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,11 +116,10 @@ public class RegisterUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
                                 .addComponent(jLabel6))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(65, 65, 65)
-                                    .addComponent(jLabel3)
-                                    .addGap(66, 66, 66))
+                                    .addComponent(jLabel3))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jButtonregister)
                                     .addGap(48, 48, 48))
@@ -128,13 +127,12 @@ public class RegisterUI extends javax.swing.JFrame {
                                 .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(55, 55, 55)
-                                    .addComponent(jLabel8)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jCheckBoxMale)
+                                    .addComponent(jLabel8))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jRadioButtonMale)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCheckBoxMale1))
-                                .addComponent(jTextFieldLName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jRadioButtonFemale)))
+                            .addComponent(jTextFieldLName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jLabel1)))
@@ -170,11 +168,11 @@ public class RegisterUI extends javax.swing.JFrame {
                 .addComponent(jTextFieldLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxMale)
-                    .addComponent(jCheckBoxMale1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jRadioButtonMale)
+                    .addComponent(jRadioButtonFemale))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDatePickerBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,8 +235,6 @@ public class RegisterUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonlogin;
     private javax.swing.JButton jButtonregister;
-    private javax.swing.JCheckBox jCheckBoxMale;
-    private javax.swing.JCheckBox jCheckBoxMale1;
     private com.github.lgooddatepicker.components.DatePicker jDatePickerBirth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -248,6 +244,8 @@ public class RegisterUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JRadioButton jRadioButtonFemale;
+    private javax.swing.JRadioButton jRadioButtonMale;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldFName;
     private javax.swing.JTextField jTextFieldLName;

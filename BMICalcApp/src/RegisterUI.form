@@ -43,11 +43,10 @@
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jButtonregister" min="-2" max="-2" attributes="0"/>
@@ -59,15 +58,13 @@
                                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jCheckBoxMale" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonMale" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jCheckBoxMale1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonFemale" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldLName" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jTextFieldLName" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -113,12 +110,12 @@
               <Component id="jTextFieldLName" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBoxMale" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxMale1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonMale" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonFemale" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jDatePickerBirth" min="-2" max="-2" attributes="0"/>
@@ -247,28 +244,28 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxMale">
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gender"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="MS UI Gothic" size="12" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonMale">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Male"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="MS UI Gothic" size="12" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonFemale">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Female"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxMale1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="MS UI Gothic" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Male"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="MS UI Gothic" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Gender"/>
       </Properties>
     </Component>
   </SubComponents>
