@@ -1,13 +1,3 @@
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -17,64 +7,15 @@ import java.util.logging.Logger;
  *
  * @author mputu
  */
-public class ChatUI extends javax.swing.JFrame implements Runnable{
+public class ChatUI extends javax.swing.JFrame {
 
     /**
      * Creates new form ChatUI
      */
-    private Socket clientSocket;
-    private Thread t;
-//    private BufferedReader reader;
-//    private PrintWriter writer;
-//    
-//    private String serverIP = "localhost";
-//    private int serverPort = 8888;
-    
     public ChatUI() {
         initComponents();
-        try {
-            clientSocket = new Socket("localhost", 6000);
-            if(t==null){
-                t =new Thread(this, "Client");
-                t.start();
-            }
-        } catch (Exception e) {
-                   Logger.getLogger(ChatUI.class.getName()).log(Level.SEVERE, null, e);
-        }
     }
-    
-        @Override
-    public void run() {
-        try {
-            while (true) {
-                getMessage();
-            }
-        } catch (Exception e) {
-            Logger.getLogger(ChatUI.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-    public void getMessage() throws IOException {
-        String chatServer;
-        try {
-            //Await response from server.
-            //Prep method for server response
-            BufferedReader chatFromServer = new BufferedReader(
-                    new InputStreamReader(clientSocket.getInputStream()));
 
-            //Retreive only string messages.
-            chatServer = chatFromServer.readLine();
-
-            //Display chat from server
-            jTextAreaResult.append(chatServer + "\n");
-        } catch (Exception e) {
-            System.out.println("Error is in FormClient.getMessage(): " + e);
-        }
-
-    }
-    
-//    public void sendMessage(){
-//        
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,11 +41,6 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
 
         jButtonSend.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonSend.setText("Send");
-        jButtonSend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSendActionPerformed(evt);
-            }
-        });
 
         jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonHome.setText("Home");
@@ -142,32 +78,10 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSendActionPerformed
-//        sendMessage();
-        // TODO add your handling code here:
-        try {
-            String chatClient, chatServer; //variables
-            String name = "John";
-            chatClient = name + ": " + jTextFieldChat.getText(); //Get string from textfield
-            //txtChat.append("Client: " + chatClient + "\n");
-
-            //Prep to send message to server.
-            DataOutputStream sendToServer = new DataOutputStream(clientSocket.getOutputStream());
-
-            //Send message to server using writeBytes
-            sendToServer.writeBytes(chatClient + "\n");
-
-        } catch (Exception e) {
-            System.out.println("The error is in buttonSend: " + e);
-        }
-    }//GEN-LAST:event_jButtonSendActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -206,6 +120,4 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
     private javax.swing.JTextArea jTextAreaResult;
     private javax.swing.JTextField jTextFieldChat;
     // End of variables declaration//GEN-END:variables
-
-
 }
