@@ -54,12 +54,22 @@ public class LoginUI extends javax.swing.JFrame {
 
         jButtonlogin.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonlogin.setText("Log In");
+        jButtonlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonloginActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel4.setText("Don’t have an account?");
 
         jButtonregister.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonregister.setText("Register");
+        jButtonregister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonregisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,6 +129,17 @@ public class LoginUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
+        // TODO add your handling code here:
+        String email = jTextFieldEmail.getText();
+        String passwd = jTextFieldPassword.getText();
+        
+    }//GEN-LAST:event_jButtonloginActionPerformed
+
+    private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonregisterActionPerformed
 
     /**
      * @param args the command line arguments
