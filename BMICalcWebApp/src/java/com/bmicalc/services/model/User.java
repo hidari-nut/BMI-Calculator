@@ -109,7 +109,13 @@ public class User extends ConnModel {
         this.password = password;
         this.password_salt = password_salt;
     }
-
+    
+    @Override
+    public String toString(){
+        return email + "~" + firstName + "~" + lastName + "~" + gender + "~" + dateOfBirth.toString() + "~" + accountMade.toString() + "~" + password
+                 + "~" + password_salt;
+    }
+    
     public boolean insertData() {
         try {
             //If connection is NOT closed
@@ -117,6 +123,9 @@ public class User extends ConnModel {
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement
                 ("INSERT INTO tuser(email, first_name, last_name, gender, date_of_birth, account_made, password, password_salt) "
                         + "VALUES (?,?,?,?,?,?,?,?)");
+                
+                this.setPassword_salt(this.generateSalt());
+                
                 sql.setString(1, this.email);
                 sql.setString(2, this.firstName);
                 sql.setString(3, this.lastName);
@@ -142,6 +151,7 @@ public class User extends ConnModel {
             if (!ConnModel.connection.isClosed()) {
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("SELECT * FROM tuser WHERE email=?");
                 sql.setString(1, email);
+
                 this.result = sql.executeQuery();
             }
 
@@ -163,6 +173,11 @@ public class User extends ConnModel {
             System.out.println("Error in User.viewData: " + e);
         }
         return null;
+    }
+    
+    public String generateSalt(){
+        //Will Return Salt
+        return "";
     }
     
     public String hashPassword(String password, String password_salt){
@@ -192,7 +207,7 @@ public class User extends ConnModel {
         return new User();
     }
     
-    public void updateData(){
+    public boolean updateData(){
         try {
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
@@ -200,27 +215,30 @@ public class User extends ConnModel {
                         "UPDATE vehicle SET plate = ?, brand = ?, vehicle_class = ?, color = ? WHERE id = ?");
                 
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement(
-                        "UPDATE tuser SET first_name = ?, last_name = ?, gender = ?, date_of_birth = ?, account_made = ?,"
-                                + "password = ?, password_salt = ? WHERE email = ?");
+                        "UPDATE tuser SET first_name = ?, last_name = ?, gender = ?, date_of_birth = ?, account_made = ? WHERE email = ?");
                 
                 sql.setString(1, this.firstName);
                 sql.setString(2, this.lastName);
                 sql.setString(3, this.gender);
                 sql.setString(4, this.dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 sql.setString(5, this.accountMade.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                sql.setString(6, this.getPassword());
-                sql.setString(7, this.password_salt);
-                sql.setString(8, this.email);
+//                sql.setString(6, this.getPassword());
+//                sql.setString(7, this.password_salt);
+                sql.setString(6, this.email);
                 
                 sql.executeUpdate();
                 sql.close();
+                
+                return true;
             }
         } catch (Exception e) {
             System.out.println("Error in User.updateData: " + e);
+            return false;
         }
+        return false;
     }
     
-        public void deleteData(String email){
+        public boolean deleteData(String email){
         try {
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
@@ -229,9 +247,12 @@ public class User extends ConnModel {
                 sql.setString(1, email);
                 sql.executeUpdate();
                 sql.close();
+                return true;
             }
         } catch (Exception e) {
             System.out.println("Error in User.deleteData: " + e);
+            return false;
         }
+        return false;
     }
 }
