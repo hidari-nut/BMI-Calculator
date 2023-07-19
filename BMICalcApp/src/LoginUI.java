@@ -1,8 +1,11 @@
+
+import classes.User;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author mputu
@@ -131,14 +134,25 @@ public class LoginUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
-        // TODO add your handling code here:
         String email = jTextFieldEmail.getText();
-        String passwd = jTextFieldPassword.getText();
-        
+        String password = jTextFieldPassword.getText();
+        System.out.println("Email, Pass: " + email + ", " + password);
+
+        String userDetailString = viewUser(email, password);
+        User userLogin = new User(userDetailString);
+
+        if (userLogin.getEmail() == null || userLogin.getEmail().equals("")) {
+            JOptionPane.showMessageDialog(null, "The inputted email or password is incorrect");
+        } else {
+            JOptionPane.showMessageDialog(null, "Login successful!");
+            MainUI mainUI = new MainUI();
+            mainUI.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonloginActionPerformed
 
     private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
-        // TODO add your handling code here:
+        RegisterUI registerUI = new RegisterUI();
+        registerUI.setVisible(true);
     }//GEN-LAST:event_jButtonregisterActionPerformed
 
     /**
@@ -187,4 +201,10 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldPassword;
     // End of variables declaration//GEN-END:variables
+
+    private static String viewUser(java.lang.String email, java.lang.String password) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.viewUser(email, password);
+    }
 }

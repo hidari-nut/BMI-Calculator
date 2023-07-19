@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import classes.User;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author mputu
@@ -55,6 +60,11 @@ public class RegisterUI extends javax.swing.JFrame {
 
         jButtonlogin.setText("Log In");
         jButtonlogin.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonloginActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Already have an account?");
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
@@ -193,9 +203,25 @@ public class RegisterUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
-        // TODO add your handling code here:
-        System.out.println(jDatePickerBirth.getDate());
+        String email = jTextFieldEmail.getText();
+        String firstName = jTextFieldFName.getText();
+        String lastName = jTextFieldLName.getText();
+        String gender = "";
+        if (jRadioButtonMale.isSelected()) {
+            gender = "M";
+        } else {
+            gender = "F";
+        }
+        LocalDate dateOfBirth = (LocalDate) jDatePickerBirth.getDate();
+        LocalDateTime accountMade = LocalDateTime.now();
+        String password = jTextFieldPassword.getText();
+
+        insertUser(email, firstName, lastName, gender, dateOfBirth.toString(), accountMade.toString(), password);
     }//GEN-LAST:event_jButtonregisterActionPerformed
+
+    private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,4 +277,11 @@ public class RegisterUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldLName;
     private javax.swing.JTextField jTextFieldPassword;
     // End of variables declaration//GEN-END:variables
+
+    private static boolean insertUser(java.lang.String email, java.lang.String firstName, java.lang.String lastName, java.lang.String gender, java.lang.String dateOfBirth, java.lang.String accountMade, java.lang.String password) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.insertUser(email, firstName, lastName, gender, dateOfBirth, accountMade, password);
+    }
+
 }

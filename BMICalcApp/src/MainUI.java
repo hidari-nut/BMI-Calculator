@@ -1,3 +1,6 @@
+
+import classes.User;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -12,8 +15,17 @@ public class MainUI extends javax.swing.JFrame {
     /**
      * Creates new form MainUI
      */
+    User userLogin;
+    
     public MainUI() {
         initComponents();
+    }
+    
+    public MainUI(User user) {
+        initComponents();
+        userLogin = user;
+        
+        jLabelUser.setText(userLogin.getFirstName() + " " + userLogin.getLastName());
     }
 
     /**

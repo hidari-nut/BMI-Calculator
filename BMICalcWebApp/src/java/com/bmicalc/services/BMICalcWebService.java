@@ -33,8 +33,8 @@ public class BMICalcWebService {
      * Web service operation
      */
     @WebMethod(operationName = "insertUser")
-    public boolean insertUser(@WebParam(name = "email") String email, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "gender") String gender, @WebParam(name = "dateOfBirth") LocalDate dateOfBirth, @WebParam(name = "accountMade") LocalDateTime accountMade, @WebParam(name = "password") String password) {
-        User newUser = new User(email, firstName, lastName, gender, dateOfBirth, accountMade, password, "");
+    public boolean insertUser(@WebParam(name = "email") String email, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "gender") String gender, @WebParam(name = "dateOfBirth") String dateOfBirth, @WebParam(name = "accountMade") String accountMade, @WebParam(name = "password") String password) {
+        User newUser = new User(email, firstName, lastName, gender, LocalDate.parse(dateOfBirth), LocalDateTime.parse(accountMade), password, "");
         boolean result = newUser.insertData();
         return result;
     }
@@ -54,8 +54,8 @@ public class BMICalcWebService {
      * Web service operation
      */
     @WebMethod(operationName = "updateUser")
-    public boolean updateUser(@WebParam(name = "email") String email, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "gender") String gender, @WebParam(name = "dateOfBirth") LocalDate dateOfBirth, @WebParam(name = "accountMade") LocalDateTime accountMade) {
-        User userUpd = new User(email, firstName, lastName, gender, dateOfBirth, accountMade, "", "");
+    public boolean updateUser(@WebParam(name = "email") String email, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "gender") String gender, @WebParam(name = "dateOfBirth") String dateOfBirth, @WebParam(name = "accountMade") String accountMade) {
+        User userUpd = new User(email, firstName, lastName, gender, LocalDate.parse(dateOfBirth), LocalDateTime.parse(accountMade), "", "");
         boolean result = userUpd.updateData();
         return result;
     }
@@ -71,8 +71,8 @@ public class BMICalcWebService {
      * Web service operation
      */
     @WebMethod(operationName = "insertBMIResult")
-    public boolean insertBMIResult(@WebParam(name = "userEmail") String userEmail, @WebParam(name = "bmi") double bmi, @WebParam(name = "date_added") LocalDateTime date_added, @WebParam(name = "height") double height, @WebParam(name = "weight") double weight) {
-        BmiResult bmiResult = new BmiResult(userEmail, bmi, date_added, height, weight);
+    public boolean insertBMIResult(@WebParam(name = "userEmail") String userEmail, @WebParam(name = "bmi") double bmi, @WebParam(name = "date_added") String date_added, @WebParam(name = "height") double height, @WebParam(name = "weight") double weight) {
+        BmiResult bmiResult = new BmiResult(userEmail, bmi, LocalDateTime.parse(date_added), height, weight);
         boolean result = bmiResult.insertData();
         return result;
     }
@@ -92,7 +92,32 @@ public class BMICalcWebService {
      */
     @WebMethod(operationName = "calculateBMI")
     public Double calculateBMI(@WebParam(name = "height") double height, @WebParam(name = "weight") double weight) {
-        //TODO write your implementation code here:
-        return null;
+        BmiResult bmiResult = new BmiResult();
+        double bmi = bmiResult.calculateBMI(height, weight);
+        return bmi;
     }
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "classifyBMI")
+    public String classifyBMI(@WebParam(name = "bmi") double bmi) {
+        BmiResult bmiResult = new BmiResult();
+        String categoryBmi = bmiResult.classifyBMI(bmi);
+        return categoryBmi;
+    }
+
+    /**
+     * Web service operation
+     * Checks if an email address is used by another user account
+     * 
+     * @return true if email is used by another user account
+     */
+    @WebMethod(operationName = "checkUserEmail")
+    public boolean checkUserEmail(@WebParam(name = "email") String email) {
+        User user = new User();
+        return user.checkEmailUsed(email);
+    }
+    
+    
 }

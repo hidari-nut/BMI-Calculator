@@ -112,12 +112,34 @@ public class User extends ConnModel {
     
     @Override
     public String toString(){
-        return email + "~" + firstName + "~" + lastName + "~" + gender + "~" + dateOfBirth.toString() + "~" + accountMade.toString() + "~" + password
-                 + "~" + password_salt;
+        return email + "~" + firstName + "~" + lastName + "~" + gender + "~" + dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                + "~" + accountMade.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "~" + password
+                 + "~" + password_salt + "~";
+    }
+    
+    /**
+     * Checks if an email is used by another user account in the database.
+     * 
+     * @param email
+     * @return true if email is used, false if email is not used
+     */
+    public boolean checkEmailUsed(String email){
+        User user = (User) viewData(email);
+        if(user.getEmail().equals(email)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     public boolean insertData() {
         try {
+            //Checks if the email is used by another user account
+            if(checkEmailUsed(email) == true){
+                return false;
+            }
+            
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement
@@ -194,6 +216,7 @@ public class User extends ConnModel {
             String passwordLogin = userLogin.hashPassword(password, userLogin.getPassword_salt());
 
             if (userLogin != null) {
+                System.out.println("User Exists");
                 if (userPass.equals(passwordLogin)) {
                     return userLogin;
                 } else {

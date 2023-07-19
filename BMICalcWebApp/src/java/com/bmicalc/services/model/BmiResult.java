@@ -80,7 +80,8 @@ public class BmiResult extends ConnModel {
 
     @Override
     public String toString() {
-        return userEmail + "~" + bmi + "~" + date_added + "~" + height + "~" + weight;
+        return userEmail + "~" + Double.toString(bmi) + "~" + date_added.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) 
+                + "~" + Double.toString(height) + "~" + Double.toString(weight);
     }
 
     public boolean insertData() {

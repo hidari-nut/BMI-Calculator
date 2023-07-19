@@ -29,7 +29,7 @@ public class ConnModel {
         if (ConnModel.connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-                return DriverManager.getConnection("jdbc:mysql://localhost/bmidb", "yuvee", "sqlserver03");
+                return DriverManager.getConnection("jdbc:mysql://localhost/bmidb", "root", "");
             } catch (Exception e) {
                 System.out.println("Error in _getConnection: " + e);
             }
