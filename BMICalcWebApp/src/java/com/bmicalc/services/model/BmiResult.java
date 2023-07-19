@@ -88,7 +88,7 @@ public class BmiResult extends ConnModel {
         try {
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
-                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("INSERT INTO tbmiresult(tUser_email, bmi, date_added, height, weight) VALUES (?,?,?,?,?)");
+                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("INSERT INTO tBMIResult (tUser_email, bmi, date_added, height, weight) VALUES (?,?,?,?,?)");
                 sql.setString(1, this.userEmail);
                 sql.setDouble(2, this.bmi);
                 sql.setString(3, this.date_added.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -157,7 +157,7 @@ public class BmiResult extends ConnModel {
     }
 
     public double calculateBMI(double height, double weight) {
-        double bmi = height / Math.pow(weight, 2);
+        double bmi = weight / (Math.pow(height, 2));
         return bmi;
     }
 

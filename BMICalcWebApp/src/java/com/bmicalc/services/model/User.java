@@ -109,45 +109,43 @@ public class User extends ConnModel {
         this.password = password;
         this.password_salt = password_salt;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return email + "~" + firstName + "~" + lastName + "~" + gender + "~" + dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
                 + "~" + accountMade.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "~" + password
-                 + "~" + password_salt + "~";
+                + "~" + password_salt + "~";
     }
-    
+
     /**
      * Checks if an email is used by another user account in the database.
-     * 
+     *
      * @param email
      * @return true if email is used, false if email is not used
      */
-    public boolean checkEmailUsed(String email){
+    public boolean checkEmailUsed(String email) {
         User user = (User) viewData(email);
-        if(user.getEmail().equals(email)){
+        if (user.getEmail().equals(email)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    
+
     public boolean insertData() {
         try {
             //Checks if the email is used by another user account
-            if(checkEmailUsed(email) == true){
+            if (checkEmailUsed(email) == true) {
                 return false;
             }
-            
+
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
-                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement
-                ("INSERT INTO tuser(email, first_name, last_name, gender, date_of_birth, account_made, password, password_salt) "
+                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("INSERT INTO tuser(email, first_name, last_name, gender, date_of_birth, account_made, password, password_salt) "
                         + "VALUES (?,?,?,?,?,?,?,?)");
-                
+
                 this.setPassword_salt(this.generateSalt());
-                
+
                 sql.setString(1, this.email);
                 sql.setString(2, this.firstName);
                 sql.setString(3, this.lastName);
@@ -183,8 +181,8 @@ public class User extends ConnModel {
                         this.result.getString("first_name"),
                         this.result.getString("last_name"),
                         this.result.getString("gender"),
-                        this.result.getDate("dateOfBirth").toLocalDate(),
-                        LocalDateTime.parse(this.result.getString("accountMade"),
+                        this.result.getDate("date_of_birth").toLocalDate(),
+                        LocalDateTime.parse(this.result.getString("account_made"),
                                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                         this.result.getString("password"),
                         this.result.getString("password_salt"));
@@ -196,13 +194,13 @@ public class User extends ConnModel {
         }
         return null;
     }
-    
-    public String generateSalt(){
+
+    public String generateSalt() {
         //Will Return Salt
         return "";
     }
-    
-    public String hashPassword(String password, String password_salt){
+
+    public String hashPassword(String password, String password_salt) {
         // Insert Hashing Algorithm Here
         //PBKDF2 Hashing with Salt.
         return password;
@@ -212,7 +210,7 @@ public class User extends ConnModel {
         try {
             User userLogin = (User) viewData(email);
             String userPass = userLogin.getPassword();
-            
+
             String passwordLogin = userLogin.hashPassword(password, userLogin.getPassword_salt());
 
             if (userLogin != null) {
@@ -229,17 +227,17 @@ public class User extends ConnModel {
         }
         return new User();
     }
-    
-    public boolean updateData(){
+
+    public boolean updateData() {
         try {
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
                 PreparedStatement sql2 = (PreparedStatement) ConnModel.connection.prepareStatement(
                         "UPDATE vehicle SET plate = ?, brand = ?, vehicle_class = ?, color = ? WHERE id = ?");
-                
+
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement(
                         "UPDATE tuser SET first_name = ?, last_name = ?, gender = ?, date_of_birth = ?, account_made = ? WHERE email = ?");
-                
+
                 sql.setString(1, this.firstName);
                 sql.setString(2, this.lastName);
                 sql.setString(3, this.gender);
@@ -248,10 +246,10 @@ public class User extends ConnModel {
 //                sql.setString(6, this.getPassword());
 //                sql.setString(7, this.password_salt);
                 sql.setString(6, this.email);
-                
+
                 sql.executeUpdate();
                 sql.close();
-                
+
                 return true;
             }
         } catch (Exception e) {
@@ -260,8 +258,8 @@ public class User extends ConnModel {
         }
         return false;
     }
-    
-        public boolean deleteData(String email){
+
+    public boolean deleteData(String email) {
         try {
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {

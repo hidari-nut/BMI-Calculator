@@ -8,6 +8,7 @@ import com.bmicalc.services.model.BmiResult;
 import com.bmicalc.services.model.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -72,7 +73,7 @@ public class BMICalcWebService {
      */
     @WebMethod(operationName = "insertBMIResult")
     public boolean insertBMIResult(@WebParam(name = "userEmail") String userEmail, @WebParam(name = "bmi") double bmi, @WebParam(name = "date_added") String date_added, @WebParam(name = "height") double height, @WebParam(name = "weight") double weight) {
-        BmiResult bmiResult = new BmiResult(userEmail, bmi, LocalDateTime.parse(date_added), height, weight);
+        BmiResult bmiResult = new BmiResult(userEmail, bmi, LocalDateTime.parse(date_added, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), height, weight);
         boolean result = bmiResult.insertData();
         return result;
     }
