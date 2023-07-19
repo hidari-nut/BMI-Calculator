@@ -78,6 +78,11 @@ public class BmiResult extends ConnModel {
         this.weight = weight;
     }
 
+    @Override
+    public String toString() {
+        return userEmail + "~" + bmi + "~" + date_added + "~" + height + "~" + weight;
+    }
+
     public boolean insertData() {
         try {
             //If connection is NOT closed
@@ -104,7 +109,9 @@ public class BmiResult extends ConnModel {
     public List<BmiResult> viewData(String email) {
         try {
             if (!ConnModel.connection.isClosed()) {
-                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("SELECT * FROM tuser WHERE email=?");
+                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("SELECT tUser_email, bmi, date_added, height, weight FROM tBMIResult "
+                        + "INNER JOIN tUser on tBMIResult.tUser_email = tUser.email "
+                        + "WHERE tUser.email=?;");
                 sql.setString(1, email);
 
                 this.result = sql.executeQuery();
@@ -115,7 +122,7 @@ public class BmiResult extends ConnModel {
             while (this.result.next()) {
                 result = new BmiResult(this.result.getString("tUser_email"),
                         this.result.getDouble("bmi"),
-                        LocalDateTime.parse(this.result.getString("date_added"), 
+                        LocalDateTime.parse(this.result.getString("date_added"),
                                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                         this.result.getDouble("height"),
                         this.result.getDouble("weight"));
@@ -128,5 +135,46 @@ public class BmiResult extends ConnModel {
             System.out.println("Error in BmiResult.viewData: " + e);
         }
         return null;
+    }
+
+    public List<String> viewDataAsString(String email) {
+        try {
+            List<String> stringResults = new ArrayList<>();
+
+            List<BmiResult> bmiResults = viewData(email);
+            for (BmiResult bmiResult : bmiResults) {
+                String stringResult = bmiResult.toString();
+                stringResults.add(stringResult);
+            }
+
+            return stringResults;
+
+        } catch (Exception e) {
+            System.out.println("Error in BmiResult.viewDataAsString: " + e);
+        }
+        return null;
+    }
+
+    public double calculateBMI(double height, double weight) {
+        double bmi = height / Math.pow(weight, 2);
+        return bmi;
+    }
+
+    public String classifyBMI(double bmi) {
+        if (bmi < 16) {
+            return "Severely underweight";
+        } else if (bmi >= 16 && bmi < 18.5) {
+            return "Underweight";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            return "Normal (healthy) weight";
+        } else if (bmi >= 25 && bmi < 30) {
+            return "Overweight";
+        } else if (bmi >= 30 && bmi < 35) {
+            return "Obese Class I (Moderate)";
+        } else if (bmi >= 35 && bmi < 40) {
+            return "Obese Class II (Severe)";
+        } else {
+            return "Obese Class III (Very severe or morbidly obese)";
+        }
     }
 }
