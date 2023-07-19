@@ -147,6 +147,7 @@ public class LoginUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Login successful!");
             MainUI mainUI = new MainUI();
             mainUI.setVisible(true);
+            
         }
     }//GEN-LAST:event_jButtonloginActionPerformed
 
