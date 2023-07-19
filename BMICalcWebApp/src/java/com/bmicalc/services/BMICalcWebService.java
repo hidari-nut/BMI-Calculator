@@ -4,12 +4,15 @@
  */
 package com.bmicalc.services;
 
+import com.bmicalc.services.model.BmiResult;
 import com.bmicalc.services.model.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -62,5 +65,34 @@ public class BMICalcWebService {
         User user = new User();
         boolean result = user.deleteData(email);
         return result;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "insertBMIResult")
+    public boolean insertBMIResult(@WebParam(name = "userEmail") String userEmail, @WebParam(name = "bmi") double bmi, @WebParam(name = "date_added") LocalDateTime date_added, @WebParam(name = "height") double height, @WebParam(name = "weight") double weight) {
+        BmiResult bmiResult = new BmiResult(userEmail, bmi, date_added, height, weight);
+        boolean result = bmiResult.insertData();
+        return result;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "viewBmiResult")
+    public List<String> viewBmiResult(@WebParam(name = "email") String email) {
+        BmiResult bmiResult = new BmiResult();
+        List<String> listResults = bmiResult.viewDataAsString(email);
+        return listResults;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "calculateBMI")
+    public Double calculateBMI(@WebParam(name = "height") double height, @WebParam(name = "weight") double weight) {
+        //TODO write your implementation code here:
+        return null;
     }
 }
