@@ -12,6 +12,9 @@ import java.time.format.DateTimeFormatter;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
@@ -152,9 +155,9 @@ public class User extends ConnModel {
 
                 String hashedPassword = hashedParts[0];
                 String salt = hashedParts[1];
-                
+
                 System.out.println("HashedPass: " + hashedPassword);
-                
+
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("INSERT INTO tuser(email, first_name, last_name, gender, date_of_birth, account_made, password, password_salt) "
                         + "VALUES (?,?,?,?,?,?,?,?)");
 
@@ -240,7 +243,7 @@ public class User extends ConnModel {
         char[] charPass = password.toCharArray();
         byte[] salt = generateSalt();
 
-        PBEKeySpec spec = new PBEKeySpec(charPass, salt, iterations, 64*8); //64 bytes long
+        PBEKeySpec spec = new PBEKeySpec(charPass, salt, iterations, 64 * 8); //64 bytes long
         SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
         byte[] hashedPass = keyFactory.generateSecret(spec).getEncoded();
@@ -340,6 +343,68 @@ public class User extends ConnModel {
             }
         } catch (Exception e) {
             System.out.println("Error in User.deleteData: " + e);
+            return false;
+        }
+        return false;
+    }
+
+    public boolean insertBlock(String userEmail, String targetEmail) {
+        try {
+            //If connection is NOT closed
+            if (!ConnModel.connection.isClosed()) {
+                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("INSERT INTO tblocked(tUser_email, target_email) "
+                        + "VALUES (?,?)");
+
+                sql.setString(1, userEmail);
+                sql.setString(2, targetEmail);
+                sql.executeUpdate();
+                sql.close();
+
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error in User.insertBlock: " + e);
+            return false;
+        }
+        return false;
+    }
+
+    public List<String> viewBlock(String userEmail){
+        try {
+            if (!ConnModel.connection.isClosed()) {
+                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("SELECT target_email FROM tblocked WHERE tUser_email=?");
+                sql.setString(1, userEmail);
+
+                this.result = sql.executeQuery();
+                System.out.println("SQL CREATED!");
+            }
+
+            List<String> blockList = new ArrayList<String>();
+            while (this.result.next()) {
+                String blockedEmail = this.result.getString("target_email");
+                blockList.add(blockedEmail);
+            }
+            return blockList;
+        } catch (Exception e) {
+            System.out.println("Error in User.viewBlock: " + e);
+            return null;
+        }
+    }
+
+    public boolean deleteBlock(String userEmail, String targetEmail) {
+        try {
+            //If connection is NOT closed
+            if (!ConnModel.connection.isClosed()) {
+                PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement(
+                        "DELETE FROM tblocked WHERE tUser_email = ? AND target_email = ?");
+                sql.setString(1, userEmail);
+                sql.setString(2, targetEmail);
+                sql.executeUpdate();
+                sql.close();
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error in User.deleteBlock: " + e);
             return false;
         }
         return false;

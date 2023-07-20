@@ -119,6 +119,35 @@ public class BMICalcWebService {
         User user = new User();
         return user.checkEmailUsed(email);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "insertBlock")
+    public boolean insertBlock(@WebParam(name = "userEmail") String userEmail, @WebParam(name = "targetEmail") String targetEmail) {
+        User user = new User();
+        boolean result = user.insertBlock(userEmail, targetEmail);
+        return result;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "viewBlock")
+    public List<String> viewBlock(@WebParam(name = "userEmail") String userEmail){
+        User user = new User();
+        List<String> blockList = user.viewBlock(userEmail);
+        return blockList;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "deleteBlock")
+    public boolean deleteBlock(@WebParam(name = "userEmail") String userEmail, @WebParam(name = "targetEmail") String targetEmail) {
+        User user = new User();
+        return user.deleteBlock(userEmail, targetEmail);
+    }
     
     
 }

@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author mputu
@@ -16,13 +15,18 @@ import java.time.format.DateTimeFormatter;
 public class CalculatorUI extends javax.swing.JFrame {
 
     User userLogin;
+    double currentBMI;
+    String currentCategory;
+    double currentHeight;
+    double currentWeight;
+
     /**
      * Creates new form CalculatorUI
      */
     public CalculatorUI() {
         initComponents();
     }
-    
+
     public CalculatorUI(User user) {
         initComponents();
         userLogin = user;
@@ -46,6 +50,7 @@ public class CalculatorUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaResult = new javax.swing.JTextArea();
         jButtonHome = new javax.swing.JButton();
+        jButtonGetRec = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -89,6 +94,14 @@ public class CalculatorUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonGetRec.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonGetRec.setText("Get Recommendation");
+        jButtonGetRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGetRecActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,8 +122,11 @@ public class CalculatorUI extends javax.swing.JFrame {
                                 .addComponent(jButtonCalculate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonHome)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonGetRec)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonHome))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -130,7 +146,9 @@ public class CalculatorUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonHome)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonHome)
+                    .addComponent(jButtonGetRec))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -149,16 +167,21 @@ public class CalculatorUI extends javax.swing.JFrame {
         double weight = Double.parseDouble(jTextFieldWeight.getText());
         double height = Double.parseDouble(jTextFieldHeight.getText());
         height = height / 100;
-        
+        currentHeight = height;
+        currentWeight = weight;
+
         double bmi = calculateBMI(height, weight);
         String categoryBmi = classifyBMI(bmi);
         String currentDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         boolean result = insertBMIResult(userLogin.getEmail(), bmi, currentDate, height, weight);
-        
-        String display = "YOUR BMI RESULTS:\n" +
-                "BMI: " + bmi + "\n" +
-                "Your Weight Category: " + categoryBmi;
+
+        String display = "YOUR BMI RESULTS:\n"
+                + "BMI: " + bmi + "\n"
+                + "Your Weight Category: " + categoryBmi;
         jTextAreaResult.setText(display);
+        
+        currentBMI = bmi;
+        currentCategory = categoryBmi;
     }//GEN-LAST:event_jButtonCalculateActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
@@ -166,6 +189,16 @@ public class CalculatorUI extends javax.swing.JFrame {
         jTextFieldHeight.setText("");
         jTextAreaResult.setText("");
     }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jButtonGetRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGetRecActionPerformed
+        try {
+            String url = "http://localhost/DistProg/index.php?bmi=" + currentBMI + "&category=" + currentCategory.replace(" ", "+") 
+                    + "&height=" + currentHeight + "&weight=" + currentWeight;
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        } catch (Exception e) {
+            System.out.println("Error on jButtonGetRec: " + e);
+        }
+    }//GEN-LAST:event_jButtonGetRecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +238,7 @@ public class CalculatorUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCalculate;
     private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonGetRec;
     private javax.swing.JButton jButtonHome;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
