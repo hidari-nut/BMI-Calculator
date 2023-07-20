@@ -1,22 +1,43 @@
 
 import classes.User;
+import java.awt.Color;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author mputu
  */
 public class ChartUI extends javax.swing.JFrame {
+
     User userLogin;
+
     /**
      * Creates new form ChartUI
      */
-    public ChartUI() {
+    public ChartUI(DefaultCategoryDataset dataSet) {
         initComponents();
+        JFreeChart chart = ChartFactory.createBarChart("BMI", "Year", "Day", dataSet, PlotOrientation.VERTICAL, false, true, false);
+
+        CategoryPlot plot = chart.getCategoryPlot();
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, Color.ORANGE);
+        
+        ChartPanel chartPanel = new ChartPanel(chart);
+        jPanelChart.setLayout(new java.awt.BorderLayout());
+        jPanelChart.add(chartPanel);
     }
 
     /**
@@ -28,45 +49,72 @@ public class ChartUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonHome = new javax.swing.JButton();
+        jButtonReturn = new javax.swing.JButton();
+        jPanelChart = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonHome.setText("Home");
-        jButtonHome.addActionListener(new java.awt.event.ActionListener() {
+        jButtonReturn.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonReturn.setText("Return");
+        jButtonReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHomeActionPerformed(evt);
+                jButtonReturnActionPerformed(evt);
             }
         });
+
+        jPanelChart.setMaximumSize(new java.awt.Dimension(458, 292));
+
+        javax.swing.GroupLayout jPanelChartLayout = new javax.swing.GroupLayout(jPanelChart);
+        jPanelChart.setLayout(jPanelChartLayout);
+        jPanelChartLayout.setHorizontalGroup(
+            jPanelChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 458, Short.MAX_VALUE)
+        );
+        jPanelChartLayout.setVerticalGroup(
+            jPanelChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 323, Short.MAX_VALUE)
+        );
+
+        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabel1.setText("Graph");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(369, Short.MAX_VALUE)
-                .addComponent(jButtonHome)
-                .addGap(22, 22, 22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonReturn)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(323, Short.MAX_VALUE)
-                .addComponent(jButtonHome)
-                .addGap(18, 18, 18))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonReturn)
+                .addGap(12, 12, 12))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
+    private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
         // TODO add your handling code here:
-        MainUI mainUI = new MainUI(userLogin);
-        mainUI.setVisible(true);
+        StatsUI statsUI = new StatsUI(userLogin);
+        statsUI.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButtonHomeActionPerformed
+    }//GEN-LAST:event_jButtonReturnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,13 +145,19 @@ public class ChartUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private DefaultCategoryDataset dataset;
+
             public void run() {
-                new ChartUI().setVisible(true);
+                JFreeChart chart = null;
+                new ChartUI(dataset).setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonHome;
+    private javax.swing.JButton jButtonReturn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanelChart;
     // End of variables declaration//GEN-END:variables
 }

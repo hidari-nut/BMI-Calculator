@@ -1,5 +1,4 @@
 
-
 import classes.User;
 import classes.BmiResult;
 import java.time.format.DateTimeFormatter;
@@ -8,8 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
-import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import java.awt.Color;
+import org.jfree.chart.renderer.category.BarRenderer;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -21,7 +24,7 @@ import org.jfree.data.general.DefaultPieDataset;
 public class StatsUI extends javax.swing.JFrame {
 
     User userLogin;
-    
+
     List<BmiResult> listBMIResult;
 
     /**
@@ -104,7 +107,7 @@ public class StatsUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonGenerate.setText("Generate Chart");
+        jButtonGenerate.setText("Generate Graph");
         jButtonGenerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGenerateActionPerformed(evt);
@@ -170,7 +173,7 @@ public class StatsUI extends javax.swing.JFrame {
 
             model.addRow(valueData);
         }
-        
+
         jTableResult.getColumnModel().getColumn(0).setPreferredWidth(20);
         jTableResult.getColumnModel().getColumn(1).setPreferredWidth(20);
         jTableResult.getColumnModel().getColumn(2).setPreferredWidth(20);
@@ -188,19 +191,46 @@ public class StatsUI extends javax.swing.JFrame {
 
     private void jButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateActionPerformed
         // TODO add your handling code here:
-        DefaultPieDataset pieDataSet = new DefaultPieDataset();
-        pieDataSet.setValue("One", new Integer(10));
-        pieDataSet.setValue("Two", new Integer(20));
-        pieDataSet.setValue("Three", new Integer(30));
-        pieDataSet.setValue("Four", new Integer(40));
-        JFreeChart chart = ChartFactory.createPieChart("Something", pieDataSet, true, true, true);
-        
-        PiePlot P =(PiePlot)chart.getPlot();
-        
-        
-        
-        
-        
+
+//        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+//        dataSet.setValue(2010, "Year", "Day 1");
+//        dataSet.setValue(2011, "Year", "Day 2");
+//        dataSet.setValue(2012, "Year", "Day 3");
+//        dataSet.setValue(2013, "Year", "Day 4");
+//
+//        JFreeChart chart = ChartFactory.createBarChart("BMI", "Year", "Day", dataSet, PlotOrientation.VERTICAL, false, true, false);
+//
+//
+//        ChartUI inter = new ChartUI(dataSet);
+//        inter.setVisible(true);
+
+
+        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+
+        for (BmiResult bmiResult : listBMIResult) {
+            double bmiValue = bmiResult.getBmi();
+            String dateFormatted = bmiResult.getDate_added().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+
+            String dayKey = dateFormatted; 
+
+            dataSet.setValue(bmiValue, "BMI", dayKey);
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                "BMI Chart",
+                "Day", 
+                "BMI Value", 
+                dataSet, // Dataset
+                PlotOrientation.VERTICAL,
+                false,
+                true,
+                false
+        );
+
+        // Display the chart in a new window
+        ChartUI chartUI = new ChartUI(dataSet);
+        chartUI.setVisible(true);
+
     }//GEN-LAST:event_jButtonGenerateActionPerformed
 
     /**

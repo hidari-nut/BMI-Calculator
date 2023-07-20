@@ -123,7 +123,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonGenerate">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Generate Chart"/>
+        <Property name="text" type="java.lang.String" value="Generate Graph"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGenerateActionPerformed"/>
