@@ -32,6 +32,7 @@ public class ChartUI extends javax.swing.JFrame {
 
     public ChartUI(List<BmiResult> listBMI) {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         listBMIResult = listBMI;
         DefaultCategoryDataset dataset = createDataset();
@@ -53,6 +54,7 @@ public class ChartUI extends javax.swing.JFrame {
         initComponents();
         userLogin = user;
         listBMIResult = listBMI;
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         DefaultCategoryDataset dataset = createDataset();
         // Create chart  
@@ -164,9 +166,6 @@ public class ChartUI extends javax.swing.JFrame {
     private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
         // TODO add your handling code here:
 
-        StatsUI statsUI = new StatsUI(userLogin);
-        statsUI.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_formWindowDeactivated
     private DefaultCategoryDataset createDataset() {
 
