@@ -1,19 +1,46 @@
+
+import classes.User;
+import classes.BmiResult;
+import java.time.format.DateTimeFormatter;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author mputu
  */
 public class StatsUI extends javax.swing.JFrame {
 
+    User userLogin;
+    List<BmiResult> listBMIResult;
+
     /**
      * Creates new form StatsUI
      */
     public StatsUI() {
         initComponents();
+    }
+
+    public StatsUI(User user) {
+        initComponents();
+        userLogin = user;
+
+        jLabelUser.setText(userLogin.getFirstName() + "'s");
+
+        listBMIResult = new ArrayList<BmiResult>();
+
+        List<String> listBMIString = viewBmiResult(userLogin.getEmail());
+        for (String bmiString : listBMIString) {
+            BmiResult bmiResult = new BmiResult(bmiString);
+            listBMIResult.add(bmiResult);
+        }
+        refreshTable();
+
     }
 
     /**
@@ -37,11 +64,11 @@ public class StatsUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabelUser.setText("<user>");
         jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabelUser.setText("<user>");
 
-        jLabel1.setText("history");
         jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabel1.setText("history");
 
         jTableResult.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jTableResult.setModel(new javax.swing.table.DefaultTableModel(
@@ -52,7 +79,7 @@ public class StatsUI extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Weight", "Height", "BMI", "Status", "Date "
+                "Weight", "Height", "BMI", "Category", "Date "
             }
         ) {
             Class[] types = new Class [] {
@@ -65,16 +92,16 @@ public class StatsUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableResult);
 
-        jLabel2.setText("Graph");
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabel2.setText("Graph");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setEnabled(false);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jButtonHome.setText("Home");
         jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonHome.setText("Home");
         jButtonHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHomeActionPerformed(evt);
@@ -95,8 +122,8 @@ public class StatsUI extends javax.swing.JFrame {
                                 .addComponent(jLabelUser)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -123,9 +150,33 @@ public class StatsUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) jTableResult.getModel();
+        model.setRowCount(0);
+        //model.getDataVector().removeAllElements();
+        Object[] valueData = new Object[5];
+
+        for (BmiResult bmiResult : listBMIResult) {
+            valueData[0] = bmiResult.getWeight();
+            valueData[1] = bmiResult.getHeight();
+            valueData[2] = bmiResult.getBmi();
+            valueData[3] = classifyBMI(bmiResult.getBmi());
+            valueData[4] = bmiResult.getDate_added().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+
+            model.addRow(valueData);
+        }
+        
+        jTableResult.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jTableResult.getColumnModel().getColumn(1).setPreferredWidth(20);
+        jTableResult.getColumnModel().getColumn(2).setPreferredWidth(20);
+        jTableResult.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTableResult.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jTableResult.setAutoResizeMode(jTableResult.AUTO_RESIZE_LAST_COLUMN);
+    }
+
     private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
         // TODO add your handling code here:
-        MainUI mainUI = new MainUI();
+        MainUI mainUI = new MainUI(userLogin);
         mainUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonHomeActionPerformed
@@ -175,4 +226,16 @@ public class StatsUI extends javax.swing.JFrame {
     private javax.swing.JTable jTableResult;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    private static java.util.List<java.lang.String> viewBmiResult(java.lang.String email) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.viewBmiResult(email);
+    }
+
+    private static String classifyBMI(double bmi) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.classifyBMI(bmi);
+    }
 }

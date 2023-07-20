@@ -146,9 +146,9 @@ public class LoginUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The inputted email or password is incorrect");
         } else {
             JOptionPane.showMessageDialog(null, "Login successful!");
-            MainUI mainUI = new MainUI();
+            MainUI mainUI = new MainUI(userLogin);
             mainUI.setVisible(true);
-            
+            this.dispose();
         }
     }//GEN-LAST:event_jButtonloginActionPerformed
     private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed

@@ -104,13 +104,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\CalcLogo12.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Calculate"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="MS UI Gothic" size="12" style="0"/>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCalculateActionPerformed"/>
@@ -118,9 +112,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonChat">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\ChatLogo.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Chat"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
@@ -132,9 +123,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonStats">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\StatsLogo.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Stats"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
@@ -145,11 +133,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonProfile">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\ProfileLogo.png"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonProfileActionPerformed"/>
       </Events>

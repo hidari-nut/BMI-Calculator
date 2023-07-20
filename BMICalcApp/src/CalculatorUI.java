@@ -1,3 +1,9 @@
+
+import classes.User;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +15,17 @@
  */
 public class CalculatorUI extends javax.swing.JFrame {
 
+    User userLogin;
     /**
      * Creates new form CalculatorUI
      */
     public CalculatorUI() {
         initComponents();
+    }
+    
+    public CalculatorUI(User user) {
+        initComponents();
+        userLogin = user;
     }
 
     /**
@@ -38,29 +50,39 @@ public class CalculatorUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel2.setText("Weight");
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+        jLabel2.setText("Weight (kg)");
 
-        jLabel3.setText("Height");
         jLabel3.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+        jLabel3.setText("Height (cm)");
 
         jTextFieldHeight.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jTextFieldWeight.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jButtonCalculate.setText("Calculate!");
         jButtonCalculate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonCalculate.setText("Calculate!");
+        jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCalculateActionPerformed(evt);
+            }
+        });
 
-        jButtonClear.setText("Clear");
         jButtonClear.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonClear.setText("Clear");
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
         jTextAreaResult.setColumns(20);
         jTextAreaResult.setRows(5);
         jTextAreaResult.setEnabled(false);
         jScrollPane1.setViewportView(jTextAreaResult);
 
-        jButtonHome.setText("Home");
         jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonHome.setText("Home");
         jButtonHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHomeActionPerformed(evt);
@@ -72,17 +94,13 @@ public class CalculatorUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel2)
-                                .addGap(94, 94, 94))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jTextFieldWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel2)
+                            .addComponent(jTextFieldWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
@@ -91,11 +109,9 @@ public class CalculatorUI extends javax.swing.JFrame {
                                 .addComponent(jButtonCalculate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonHome)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButtonHome)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,10 +140,32 @@ public class CalculatorUI extends javax.swing.JFrame {
 
     private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
         // TODO add your handling code here:
-        MainUI mainUI = new MainUI();
+        MainUI mainUI = new MainUI(userLogin);
         mainUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonHomeActionPerformed
+
+    private void jButtonCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalculateActionPerformed
+        double weight = Double.parseDouble(jTextFieldWeight.getText());
+        double height = Double.parseDouble(jTextFieldHeight.getText());
+        height = height / 100;
+        
+        double bmi = calculateBMI(height, weight);
+        String categoryBmi = classifyBMI(bmi);
+        String currentDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        boolean result = insertBMIResult(userLogin.getEmail(), bmi, currentDate, height, weight);
+        
+        String display = "YOUR BMI RESULTS:\n" +
+                "BMI: " + bmi + "\n" +
+                "Your Weight Category: " + categoryBmi;
+        jTextAreaResult.setText(display);
+    }//GEN-LAST:event_jButtonCalculateActionPerformed
+
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        jTextFieldWeight.setText("");
+        jTextFieldHeight.setText("");
+        jTextAreaResult.setText("");
+    }//GEN-LAST:event_jButtonClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,4 +213,22 @@ public class CalculatorUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldHeight;
     private javax.swing.JTextField jTextFieldWeight;
     // End of variables declaration//GEN-END:variables
+
+    private static Double calculateBMI(double height, double weight) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.calculateBMI(height, weight);
+    }
+
+    private static String classifyBMI(double bmi) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.classifyBMI(bmi);
+    }
+
+    private static boolean insertBMIResult(java.lang.String userEmail, double bmi, java.lang.String dateAdded, double height, double weight) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.insertBMIResult(userEmail, bmi, dateAdded, height, weight);
+    }
 }

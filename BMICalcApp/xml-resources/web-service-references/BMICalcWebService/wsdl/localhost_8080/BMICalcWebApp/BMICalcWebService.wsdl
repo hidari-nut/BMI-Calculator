@@ -4,17 +4,17 @@
 <xsd:import namespace="http://services.bmicalc.com/" schemaLocation="http://localhost:8080/BMICalcWebApp/BMICalcWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
-</message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
-</message>
 <message name="updateUser">
 <part name="parameters" element="tns:updateUser"/>
 </message>
 <message name="updateUserResponse">
 <part name="parameters" element="tns:updateUserResponse"/>
+</message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
 </message>
 <message name="viewUser">
 <part name="parameters" element="tns:viewUser"/>
@@ -22,29 +22,11 @@
 <message name="viewUserResponse">
 <part name="parameters" element="tns:viewUserResponse"/>
 </message>
-<message name="deleteUser">
-<part name="parameters" element="tns:deleteUser"/>
-</message>
-<message name="deleteUserResponse">
-<part name="parameters" element="tns:deleteUserResponse"/>
-</message>
-<message name="calculateBMI">
-<part name="parameters" element="tns:calculateBMI"/>
-</message>
-<message name="calculateBMIResponse">
-<part name="parameters" element="tns:calculateBMIResponse"/>
-</message>
 <message name="insertUser">
 <part name="parameters" element="tns:insertUser"/>
 </message>
 <message name="insertUserResponse">
 <part name="parameters" element="tns:insertUserResponse"/>
-</message>
-<message name="viewBmiResult">
-<part name="parameters" element="tns:viewBmiResult"/>
-</message>
-<message name="viewBmiResultResponse">
-<part name="parameters" element="tns:viewBmiResultResponse"/>
 </message>
 <message name="checkUserEmail">
 <part name="parameters" element="tns:checkUserEmail"/>
@@ -52,11 +34,29 @@
 <message name="checkUserEmailResponse">
 <part name="parameters" element="tns:checkUserEmailResponse"/>
 </message>
+<message name="calculateBMI">
+<part name="parameters" element="tns:calculateBMI"/>
+</message>
+<message name="calculateBMIResponse">
+<part name="parameters" element="tns:calculateBMIResponse"/>
+</message>
 <message name="classifyBMI">
 <part name="parameters" element="tns:classifyBMI"/>
 </message>
 <message name="classifyBMIResponse">
 <part name="parameters" element="tns:classifyBMIResponse"/>
+</message>
+<message name="deleteUser">
+<part name="parameters" element="tns:deleteUser"/>
+</message>
+<message name="deleteUserResponse">
+<part name="parameters" element="tns:deleteUserResponse"/>
+</message>
+<message name="viewBmiResult">
+<part name="parameters" element="tns:viewBmiResult"/>
+</message>
+<message name="viewBmiResultResponse">
+<part name="parameters" element="tns:viewBmiResultResponse"/>
 </message>
 <message name="insertBMIResult">
 <part name="parameters" element="tns:insertBMIResult"/>
@@ -65,41 +65,41 @@
 <part name="parameters" element="tns:insertBMIResultResponse"/>
 </message>
 <portType name="BMICalcWebService">
-<operation name="hello">
-<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/helloResponse" message="tns:helloResponse"/>
-</operation>
 <operation name="updateUser">
 <input wsam:Action="http://services.bmicalc.com/BMICalcWebService/updateUserRequest" message="tns:updateUser"/>
 <output wsam:Action="http://services.bmicalc.com/BMICalcWebService/updateUserResponse" message="tns:updateUserResponse"/>
+</operation>
+<operation name="hello">
+<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/helloResponse" message="tns:helloResponse"/>
 </operation>
 <operation name="viewUser">
 <input wsam:Action="http://services.bmicalc.com/BMICalcWebService/viewUserRequest" message="tns:viewUser"/>
 <output wsam:Action="http://services.bmicalc.com/BMICalcWebService/viewUserResponse" message="tns:viewUserResponse"/>
 </operation>
-<operation name="deleteUser">
-<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/deleteUserRequest" message="tns:deleteUser"/>
-<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/deleteUserResponse" message="tns:deleteUserResponse"/>
-</operation>
-<operation name="calculateBMI">
-<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/calculateBMIRequest" message="tns:calculateBMI"/>
-<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/calculateBMIResponse" message="tns:calculateBMIResponse"/>
-</operation>
 <operation name="insertUser">
 <input wsam:Action="http://services.bmicalc.com/BMICalcWebService/insertUserRequest" message="tns:insertUser"/>
 <output wsam:Action="http://services.bmicalc.com/BMICalcWebService/insertUserResponse" message="tns:insertUserResponse"/>
-</operation>
-<operation name="viewBmiResult">
-<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/viewBmiResultRequest" message="tns:viewBmiResult"/>
-<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/viewBmiResultResponse" message="tns:viewBmiResultResponse"/>
 </operation>
 <operation name="checkUserEmail">
 <input wsam:Action="http://services.bmicalc.com/BMICalcWebService/checkUserEmailRequest" message="tns:checkUserEmail"/>
 <output wsam:Action="http://services.bmicalc.com/BMICalcWebService/checkUserEmailResponse" message="tns:checkUserEmailResponse"/>
 </operation>
+<operation name="calculateBMI">
+<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/calculateBMIRequest" message="tns:calculateBMI"/>
+<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/calculateBMIResponse" message="tns:calculateBMIResponse"/>
+</operation>
 <operation name="classifyBMI">
 <input wsam:Action="http://services.bmicalc.com/BMICalcWebService/classifyBMIRequest" message="tns:classifyBMI"/>
 <output wsam:Action="http://services.bmicalc.com/BMICalcWebService/classifyBMIResponse" message="tns:classifyBMIResponse"/>
+</operation>
+<operation name="deleteUser">
+<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/deleteUserRequest" message="tns:deleteUser"/>
+<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/deleteUserResponse" message="tns:deleteUserResponse"/>
+</operation>
+<operation name="viewBmiResult">
+<input wsam:Action="http://services.bmicalc.com/BMICalcWebService/viewBmiResultRequest" message="tns:viewBmiResult"/>
+<output wsam:Action="http://services.bmicalc.com/BMICalcWebService/viewBmiResultResponse" message="tns:viewBmiResultResponse"/>
 </operation>
 <operation name="insertBMIResult">
 <input wsam:Action="http://services.bmicalc.com/BMICalcWebService/insertBMIResultRequest" message="tns:insertBMIResult"/>
@@ -108,7 +108,7 @@
 </portType>
 <binding name="BMICalcWebServicePortBinding" type="tns:BMICalcWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="hello">
+<operation name="updateUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -117,7 +117,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="updateUser">
+<operation name="hello">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -135,34 +135,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="deleteUser">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="calculateBMI">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="insertUser">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="viewBmiResult">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -180,7 +153,34 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="calculateBMI">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="classifyBMI">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteUser">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="viewBmiResult">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

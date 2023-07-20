@@ -30,14 +30,14 @@
                   <Component id="jButtonHome" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jLabelUser" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="477" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="512" max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
                 <Column editable="true" title="Weight" type="java.lang.Float"/>
                 <Column editable="true" title="Height" type="java.lang.Float"/>
                 <Column editable="true" title="BMI" type="java.lang.Float"/>
-                <Column editable="true" title="Status" type="java.lang.String"/>
+                <Column editable="true" title="Category" type="java.lang.String"/>
                 <Column editable="true" title="Date " type="java.lang.Object"/>
               </Table>
             </Property>

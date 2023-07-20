@@ -141,7 +141,7 @@ public class MainUI extends javax.swing.JFrame {
 
     private void jButtonCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalculateActionPerformed
         // TODO add your handling code here:
-        CalculatorUI calcUI = new CalculatorUI();
+        CalculatorUI calcUI = new CalculatorUI(userLogin);
         calcUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCalculateActionPerformed
@@ -154,7 +154,7 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonChatActionPerformed
 
     private void jButtonStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatsActionPerformed
-        StatsUI statsUI = new StatsUI();
+        StatsUI statsUI = new StatsUI(userLogin);
         statsUI.setVisible(true);
         this.dispose();
 // TODO add your handling code here:

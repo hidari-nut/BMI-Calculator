@@ -219,7 +219,7 @@ public class RegisterUI extends javax.swing.JFrame {
         String password = jTextFieldPassword.getText();
 
         insertUser(email, firstName, lastName, gender, dateOfBirth.toString(), accountMade.toString(), password);
-        
+
     }//GEN-LAST:event_jButtonregisterActionPerformed
 
     private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
