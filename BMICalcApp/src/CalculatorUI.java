@@ -56,6 +56,7 @@ public class CalculatorUI extends javax.swing.JFrame {
 
         jTextAreaResult.setColumns(20);
         jTextAreaResult.setRows(5);
+        jTextAreaResult.setEnabled(false);
         jScrollPane1.setViewportView(jTextAreaResult);
 
         jButtonHome.setText("Home");

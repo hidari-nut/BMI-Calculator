@@ -38,6 +38,7 @@ public class ChatUI extends javax.swing.JFrame {
 
         jTextAreaResult.setColumns(20);
         jTextAreaResult.setRows(5);
+        jTextAreaResult.setEnabled(false);
         jScrollPane1.setViewportView(jTextAreaResult);
 
         jTextFieldChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
