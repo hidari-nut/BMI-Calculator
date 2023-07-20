@@ -64,7 +64,6 @@ public class StatsUI extends javax.swing.JFrame {
         jTableResult = new javax.swing.JTable();
         jButtonHome = new javax.swing.JButton();
         jButtonGenerate = new javax.swing.JButton();
-        jButtonPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -112,8 +111,6 @@ public class StatsUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonPrint.setText("Print");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,16 +119,13 @@ public class StatsUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonHome)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabelUser)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel1))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonPrint)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonGenerate))))
+                        .addComponent(jButtonGenerate, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,9 +138,7 @@ public class StatsUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonPrint)
-                    .addComponent(jButtonGenerate))
+                .addComponent(jButtonGenerate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButtonHome)
                 .addContainerGap())
@@ -248,7 +240,6 @@ public class StatsUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGenerate;
     private javax.swing.JButton jButtonHome;
-    private javax.swing.JButton jButtonPrint;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JOptionPane jOptionPaneMSG;

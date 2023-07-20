@@ -82,19 +82,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="viewUser">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="viewUserResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="calculateBMI">
 <xs:sequence>
 <xs:element name="height" type="xs:double"/>
@@ -105,6 +92,19 @@
 <xs:complexType name="calculateBMIResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:double" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewUser">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -190,6 +190,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="viewBlock">
+<xs:sequence>
+<xs:element name="userEmail" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewBlockResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="insertBlock">
 <xs:sequence>
 <xs:element name="userEmail" type="xs:string" minOccurs="0"/>
@@ -200,18 +212,6 @@
 <xs:complexType name="insertBlockResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="viewBlock">
-<xs:sequence>
-<xs:element name="userEmail" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="viewBlockResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

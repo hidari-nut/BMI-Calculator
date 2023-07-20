@@ -101,16 +101,27 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButtonUsers = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaResult = new javax.swing.JTextArea();
         jTextFieldChat = new javax.swing.JTextField();
         jButtonSend = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButtonUsers = new javax.swing.JButton();
-        jButtonUsers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonUsers1 = new javax.swing.JButton();
+
+        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+        jLabel3.setText("Chat Room");
+
+        jButtonUsers.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonUsers.setText("Users");
+        jButtonUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUsersActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -123,11 +134,6 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
         jTextFieldChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jButtonSend.setText("Send");
-        jButtonSend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSendActionPerformed(evt);
-            }
-        });
         jButtonSend.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jButtonHome.setText("Home");
@@ -138,19 +144,19 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
             }
         });
 
+        jLabel1.setText("Chat Room");
+        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
         jLabel2.setText("Chat Room");
 
-        jButtonUsers.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonUsers.setText("Users");
-        jButtonUsers.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUsers1.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonUsers1.setText("Users");
+        jButtonUsers1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUsersActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
-        jLabel1.setText("Chat Room");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,12 +169,10 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextFieldChat, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButtonUsers))
+                            .addComponent(jTextFieldChat, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButtonSend, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(jButtonSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(16, 16, 16))
         );
@@ -184,9 +188,7 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
                     .addComponent(jTextFieldChat, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonHome)
-                    .addComponent(jButtonUsers))
+                .addComponent(jButtonHome)
                 .addContainerGap())
         );
 
@@ -268,8 +270,10 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
     private javax.swing.JButton jButtonHome;
     private javax.swing.JButton jButtonSend;
     private javax.swing.JButton jButtonUsers;
+    private javax.swing.JButton jButtonUsers1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaResult;
     private javax.swing.JTextField jTextFieldChat;

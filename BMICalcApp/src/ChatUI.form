@@ -10,6 +10,17 @@
         <Property name="text" type="java.lang.String" value="Chat Room"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="jButtonUsers">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="MS UI Gothic" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Users"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUsersActionPerformed"/>
+      </Events>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -41,10 +52,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="555" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jTextFieldChat" min="-2" pref="474" max="-2" attributes="0"/>
-                              <Component id="jButtonUsers" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jTextFieldChat" min="-2" pref="474" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButtonSend" max="32767" attributes="0"/>
@@ -70,10 +78,7 @@
                   <Component id="jButtonSend" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonHome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonUsers" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jButtonHome" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -105,40 +110,29 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSend">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Send"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Send"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonHome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Home"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Home"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHomeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonUsers">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Users"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="MS UI Gothic" size="12" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUsersActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Chat Room"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="18" style="1"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Chat Room"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

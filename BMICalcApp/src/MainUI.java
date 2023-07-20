@@ -48,37 +48,37 @@ public class MainUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setText("Welcome");
         jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabel1.setText("Welcome");
 
-        jLabelUser.setText("<user>");
         jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabelUser.setText("<user>");
 
-        jLabel2.setText("BMI Calculator");
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel2.setText("BMI Calculator");
 
+        jButtonCalculate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonCalculate.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\CalcLogo12.png")); // NOI18N
         jButtonCalculate.setText("Calculate");
-        jButtonCalculate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCalculateActionPerformed(evt);
             }
         });
 
+        jButtonChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonChat.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\ChatLogo.png")); // NOI18N
         jButtonChat.setText("Chat");
-        jButtonChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonChatActionPerformed(evt);
             }
         });
 
+        jButtonStats.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonStats.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\StatsLogo.png")); // NOI18N
         jButtonStats.setText("Stats");
-        jButtonStats.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonStats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonStatsActionPerformed(evt);
@@ -86,20 +86,12 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         jButtonProfile.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\ProfileLogo.png")); // NOI18N
-        jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonProfileActionPerformed(evt);
-            }
-        });
+        jButtonProfile.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(147, 147, 147))
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -109,25 +101,33 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(jButtonStats, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
+                .addComponent(jButtonProfile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonProfile)
-                .addGap(17, 17, 17))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(143, 143, 143))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelUser)
-                    .addComponent(jButtonProfile))
-                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonProfile))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabelUser))))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonChat)
@@ -159,13 +159,6 @@ public class MainUI extends javax.swing.JFrame {
         this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButtonStatsActionPerformed
-
-    private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
-        // TODO add your handling code here:
-        EditUI editUI = new EditUI();
-        editUI.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonProfileActionPerformed
 
     /**
      * @param args the command line arguments

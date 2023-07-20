@@ -24,11 +24,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="jButtonCalculate" min="-2" pref="130" max="-2" attributes="0"/>
@@ -39,28 +34,40 @@
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButtonProfile" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabelUser" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButtonProfile" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonProfile" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonCalculate" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButtonChat" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,35 +81,38 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Welcome"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="14" style="1"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Welcome"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelUser">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;user&gt;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="14" style="1"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="&lt;user&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BMI Calculator"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Berlin Sans FB Demi" size="48" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="99" red="33" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="BMI Calculator"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCalculate">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\CalcLogo12.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Calculate"/>
       </Properties>
@@ -112,10 +122,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonChat">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Chat"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\ChatLogo.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Chat"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonChatActionPerformed"/>
@@ -123,19 +136,25 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonStats">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Stats"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\StatsLogo.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Stats"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonStatsActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonProfile">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonProfileActionPerformed"/>
-      </Events>
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="E:\Download\College\Distributed Programming\PROJECT UAS\BMI-Calculator\Asset\ProfileLogo.png"/>
+        </Property>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
