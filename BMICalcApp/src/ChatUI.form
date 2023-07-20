@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="18" style="1"/>
@@ -47,7 +47,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButtonSend" pref="69" max="32767" attributes="0"/>
+                              <Component id="jButtonSend" max="32767" attributes="0"/>
                               <Component id="jButtonHome" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -140,9 +140,6 @@
           <Font name="MS UI Gothic" size="18" style="1"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHomeActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -152,7 +149,7 @@
         <Property name="text" type="java.lang.String" value="Chat Room"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonUsers">
+    <Component class="javax.swing.JButton" name="jButtonUsers1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="MS UI Gothic" size="12" style="0"/>

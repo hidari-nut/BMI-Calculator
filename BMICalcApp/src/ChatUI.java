@@ -1,4 +1,5 @@
 
+import classes.User;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
      */
     private Socket clientSocket;
     private Thread t;
+    private User userLogin;
 //    private BufferedReader reader;
 //    private PrintWriter writer;
 //    
@@ -33,6 +35,21 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
     public ChatUI() {
         initComponents();
         try {
+            clientSocket = new Socket("localhost", 6000);
+            if(t==null){
+                t =new Thread(this, "Client");
+                t.start();
+            }
+        } catch (Exception e) {
+                   Logger.getLogger(ChatUI.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public ChatUI(User user) {
+        initComponents();
+        try {
+            userLogin = user;
+            
             clientSocket = new Socket("localhost", 6000);
             if(t==null){
                 t =new Thread(this, "Client");
@@ -182,7 +199,7 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
         // TODO add your handling code here:
         try {
             String chatClient, chatServer; //variables
-            String name = "John";
+            String name = userLogin.getFirstName();
             chatClient = name + ": " + jTextFieldChat.getText(); //Get string from textfield
             //txtChat.append("Client: " + chatClient + "\n");
 
@@ -198,7 +215,7 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_jButtonSendActionPerformed
     private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
         // TODO add your handling code here:
-        MainUI mainUI = new MainUI();
+        MainUI mainUI = new MainUI(userLogin);
         mainUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonHomeActionPerformed

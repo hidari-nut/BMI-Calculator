@@ -148,7 +148,7 @@ public class MainUI extends javax.swing.JFrame {
 
     private void jButtonChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChatActionPerformed
         // TODO add your handling code here:
-        ChatUI chatUI = new ChatUI();
+        ChatUI chatUI = new ChatUI(userLogin);
         chatUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonChatActionPerformed
