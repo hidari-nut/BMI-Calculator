@@ -7,6 +7,8 @@ import classes.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -214,11 +216,31 @@ public class RegisterUI extends javax.swing.JFrame {
         } else {
             gender = "F";
         }
-        LocalDate dateOfBirth = (LocalDate) jDatePickerBirth.getDate();
+        String dobString = jDatePickerBirth.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate dateOfBirth = LocalDate.parse(dobString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         LocalDateTime accountMade = LocalDateTime.now();
         String password = jTextFieldPassword.getText();
 
-        insertUser(email, firstName, lastName, gender, dateOfBirth.toString(), accountMade.toString(), password);
+        boolean alreadyExist = checkUserEmail(email);
+        if (alreadyExist) {
+            JOptionPane.showMessageDialog(null, "This email is already used in another account");
+        } else {
+            boolean isSuccessful = insertUser(email, firstName, lastName, gender, 
+                    dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 
+                    accountMade.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), password);
+            String userString = email + "~" + firstName + "~" + lastName + "~" + gender + "~" + dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                + "~" + accountMade.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "~" + password
+                + "~";
+            System.out.println("userString: " + userString);
+            if (!isSuccessful) {
+                JOptionPane.showMessageDialog(null, "Registration failed! Please try again");
+            } else {
+                JOptionPane.showMessageDialog(null, "Account has been registered sucessfully");
+                LoginUI loginUI = new LoginUI();
+                loginUI.setVisible(true);
+                this.dispose();
+            }
+        }
 
     }//GEN-LAST:event_jButtonregisterActionPerformed
 
@@ -289,6 +311,12 @@ public class RegisterUI extends javax.swing.JFrame {
         com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
         com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
         return port.insertUser(email, firstName, lastName, gender, dateOfBirth, accountMade, password);
+    }
+
+    private static boolean checkUserEmail(java.lang.String email) {
+        com.bmicalc.services.BMICalcWebService_Service service = new com.bmicalc.services.BMICalcWebService_Service();
+        com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
+        return port.checkUserEmail(email);
     }
 
 }
