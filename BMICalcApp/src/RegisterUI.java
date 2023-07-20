@@ -49,6 +49,7 @@ public class RegisterUI extends javax.swing.JFrame {
         jRadioButtonFemale = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel2.setText("E-Mail");
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
@@ -102,8 +103,8 @@ public class RegisterUI extends javax.swing.JFrame {
         jRadioButtonMale.setText("Male");
         jRadioButtonMale.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jRadioButtonFemale.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jRadioButtonFemale.setText("Female");
+        jRadioButtonFemale.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,6 +201,7 @@ public class RegisterUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
@@ -222,6 +224,10 @@ public class RegisterUI extends javax.swing.JFrame {
 
     private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
         this.setVisible(false);
+        // TODO add your handling code here:
+        LoginUI loginUI = new LoginUI();
+        loginUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonloginActionPerformed
 
     /**
