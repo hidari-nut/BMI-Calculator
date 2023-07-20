@@ -40,9 +40,10 @@ public class EditUI extends javax.swing.JFrame {
         jLabelUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jButtonUpdate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonUpdate.setText("Update");
+        jButtonUpdate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -53,30 +54,35 @@ public class EditUI extends javax.swing.JFrame {
 
         jTextFieldEmail.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel2.setText("E-Mail");
+        jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jTextFieldFName.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel6.setText("Last Name");
+        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel5.setText("First Name");
+        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel3.setText("Password");
+        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
         jTextFieldPassword.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jLabel8.setText("Date of Birth");
+        jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonHome.setText("Home");
+        jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHomeActionPerformed(evt);
+            }
+        });
 
-        jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
         jLabelUser.setText("User Profile");
+        jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,12 +161,20 @@ public class EditUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // TODO add your handling code here:
         System.out.println(jDatePickerBirth.getDate());
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
+        // TODO add your handling code here:  
+        MainUI mainUI = new MainUI();
+        mainUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonHomeActionPerformed
 
     /**
      * @param args the command line arguments

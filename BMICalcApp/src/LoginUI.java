@@ -1,3 +1,6 @@
+
+import java.awt.event.WindowEvent;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -60,6 +63,11 @@ public class LoginUI extends javax.swing.JFrame {
 
         jButtonregister.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonregister.setText("Register");
+        jButtonregister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonregisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,6 +127,13 @@ public class LoginUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
+        // TODO add your handling code here:
+        RegisterUI regUI = new RegisterUI();
+        regUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonregisterActionPerformed
 
     /**
      * @param args the command line arguments
