@@ -1,16 +1,14 @@
 
+import classes.BmiResult;
 import classes.User;
-import java.awt.Color;
-import org.jfree.chart.JFreeChart;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,21 +21,52 @@ import org.jfree.data.general.DefaultPieDataset;
 public class ChartUI extends javax.swing.JFrame {
 
     User userLogin;
+    List<BmiResult> listBMIResult;
 
     /**
      * Creates new form ChartUI
      */
-    public ChartUI(DefaultCategoryDataset dataSet) {
+    public ChartUI() {
         initComponents();
-        JFreeChart chart = ChartFactory.createBarChart("BMI", "Year", "Day", dataSet, PlotOrientation.VERTICAL, false, true, false);
+    }
 
-        CategoryPlot plot = chart.getCategoryPlot();
-        BarRenderer renderer = (BarRenderer) plot.getRenderer();
-        renderer.setSeriesPaint(0, Color.ORANGE);
-        
-        ChartPanel chartPanel = new ChartPanel(chart);
-        jPanelChart.setLayout(new java.awt.BorderLayout());
-        jPanelChart.add(chartPanel);
+    public ChartUI(List<BmiResult> listBMI) {
+        initComponents();
+
+        listBMIResult = listBMI;
+        DefaultCategoryDataset dataset = createDataset();
+        // Create chart  
+        JFreeChart chart = ChartFactory.createLineChart(
+                "BMI", // Chart title  
+                "Date", // X-Axis Label  
+                "BMI", // Y-Axis Label  
+                dataset
+        );
+
+        ChartPanel panel = new ChartPanel(chart);
+        setContentPane(panel);
+
+        //jPanelChart.add(panel);
+    }
+
+    public ChartUI(List<BmiResult> listBMI, User user) {
+        initComponents();
+        userLogin = user;
+        listBMIResult = listBMI;
+
+        DefaultCategoryDataset dataset = createDataset();
+        // Create chart  
+        JFreeChart chart = ChartFactory.createLineChart(
+                "BMI History", // Chart title  
+                "Date", // X-Axis Label  
+                "BMI", // Y-Axis Label  
+                dataset
+        );
+
+        ChartPanel panel = new ChartPanel(chart);
+        setContentPane(panel);
+
+        //jPanelChart.add(panel);
     }
 
     /**
@@ -54,6 +83,14 @@ public class ChartUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         jButtonReturn.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonReturn.setText("Return");
@@ -116,6 +153,32 @@ public class ChartUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonReturnActionPerformed
 
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        StatsUI statsUI = new StatsUI(userLogin);
+        statsUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        // TODO add your handling code here:
+
+        StatsUI statsUI = new StatsUI(userLogin);
+        statsUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowDeactivated
+    private DefaultCategoryDataset createDataset() {
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (BmiResult bmiResult : listBMIResult) {
+            dataset.setValue(bmiResult.getBmi(), "Date",
+                    bmiResult.getDate_added().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        }
+
+        return dataset;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -149,7 +212,7 @@ public class ChartUI extends javax.swing.JFrame {
 
             public void run() {
                 JFreeChart chart = null;
-                new ChartUI(dataset).setVisible(true);
+                new ChartUI().setVisible(true);
             }
         });
 

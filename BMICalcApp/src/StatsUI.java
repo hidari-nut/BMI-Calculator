@@ -1,17 +1,13 @@
 
 import classes.User;
 import classes.BmiResult;
+import classes.ConnModel;
 import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
-import java.awt.Color;
-import org.jfree.chart.renderer.category.BarRenderer;
+import javax.swing.WindowConstants;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,6 +20,7 @@ import org.jfree.chart.renderer.category.BarRenderer;
 public class StatsUI extends javax.swing.JFrame {
 
     User userLogin;
+    ConnModel conn;
 
     List<BmiResult> listBMIResult;
 
@@ -60,6 +57,7 @@ public class StatsUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPaneMSG = new javax.swing.JOptionPane();
         jLabelUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -191,46 +189,17 @@ public class StatsUI extends javax.swing.JFrame {
 
     private void jButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateActionPerformed
         // TODO add your handling code here:
-
-//        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-//        dataSet.setValue(2010, "Year", "Day 1");
-//        dataSet.setValue(2011, "Year", "Day 2");
-//        dataSet.setValue(2012, "Year", "Day 3");
-//        dataSet.setValue(2013, "Year", "Day 4");
-//
-//        JFreeChart chart = ChartFactory.createBarChart("BMI", "Year", "Day", dataSet, PlotOrientation.VERTICAL, false, true, false);
-//
-//
-//        ChartUI inter = new ChartUI(dataSet);
-//        inter.setVisible(true);
-
-
-        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-
-        for (BmiResult bmiResult : listBMIResult) {
-            double bmiValue = bmiResult.getBmi();
-            String dateFormatted = bmiResult.getDate_added().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-
-            String dayKey = dateFormatted; 
-
-            dataSet.setValue(bmiValue, "BMI", dayKey);
+        try {
+            ChartUI chart = new ChartUI(listBMIResult, userLogin);
+//            chart.setAlwaysOnTop(true);
+//            chart.pack();
+//            chart.setSize(600, 400);
+//            chart.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            chart.setVisible(true);
+            
+        } catch (Exception ex) {
+            jOptionPaneMSG.showMessageDialog(rootPane, ex);
         }
-
-        JFreeChart chart = ChartFactory.createBarChart(
-                "BMI Chart",
-                "Day", 
-                "BMI Value", 
-                dataSet, // Dataset
-                PlotOrientation.VERTICAL,
-                false,
-                true,
-                false
-        );
-
-        // Display the chart in a new window
-        ChartUI chartUI = new ChartUI(dataSet);
-        chartUI.setVisible(true);
-
     }//GEN-LAST:event_jButtonGenerateActionPerformed
 
     /**
@@ -247,16 +216,24 @@ public class StatsUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StatsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatsUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StatsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatsUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StatsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatsUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StatsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatsUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -274,6 +251,7 @@ public class StatsUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelUser;
+    private javax.swing.JOptionPane jOptionPaneMSG;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableResult;
     // End of variables declaration//GEN-END:variables

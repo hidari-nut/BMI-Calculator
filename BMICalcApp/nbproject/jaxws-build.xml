@@ -18,8 +18,8 @@
     </target>
     <target name="wsimport-client-BMICalcWebService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/BMICalcWebService"/>
-        <property name="wsdl-BMICalcWebService" location="xml-resources/web-service-references/BMICalcWebService/wsdl/localhost_8080/BMICalcWebApp/BMICalcWebService.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BMICalcWebService" destdir="${build.generated.dir}/jax-wsCache/BMICalcWebService" wsdl="${wsdl-BMICalcWebService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/BMICalcWebApp/BMICalcWebService?wsdl" xnocompile="true" xendorsed="true">
+        <property name="wsdl-BMICalcWebService" location="xml-resources/web-service-references/BMICalcWebService/wsdl/localhost_62409/BMICalcWebApp/BMICalcWebService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BMICalcWebService" destdir="${build.generated.dir}/jax-wsCache/BMICalcWebService" wsdl="${wsdl-BMICalcWebService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:62409/BMICalcWebApp/BMICalcWebService?wsdl" xnocompile="true" xendorsed="true">
             <depends file="${wsdl-BMICalcWebService}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/BMICalcWebService"/>
         </wsimport>
