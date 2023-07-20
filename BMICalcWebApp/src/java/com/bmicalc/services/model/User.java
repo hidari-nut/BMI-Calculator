@@ -279,7 +279,7 @@ public class User extends ConnModel {
             String userPass = userLogin.getPassword();
             String salt = userLogin.getPassword_salt();
 
-            boolean passwordIsCorrect = checkPassword(password, userPass, password_salt);
+            boolean passwordIsCorrect = checkPassword(password, userPass, salt);
 
             if (userLogin != null) {
                 System.out.println("User Exists");

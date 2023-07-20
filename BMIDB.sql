@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2023 at 03:56 PM
+-- Generation Time: Jul 20, 2023 at 10:56 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -48,8 +48,8 @@ CREATE TABLE `tuser` (
   `gender` enum('M','F') NOT NULL,
   `date_of_birth` datetime NOT NULL,
   `account_made` datetime NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `password_salt` varchar(45) DEFAULT NULL
+  `password` varchar(256) DEFAULT NULL,
+  `password_salt` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -57,7 +57,10 @@ CREATE TABLE `tuser` (
 --
 
 INSERT INTO `tuser` (`email`, `first_name`, `last_name`, `gender`, `date_of_birth`, `account_made`, `password`, `password_salt`) VALUES
-('admin', '', '', 'M', '2003-10-30 00:00:00', '2023-07-07 19:38:52', NULL, NULL);
+('user1', 'Anna', 'Deinhardt', 'F', '2023-07-01 00:00:00', '2023-07-20 15:53:36', '2a3f3aadd958e374036696bc7c2a04521b51d56b7be339740dbdc956441e2947eaade08dca0e593940536ced766a7e4085ce9de8a61aa6427e93574689f97a77', 'c1fc848e959204c30cecb97de9a43b3f'),
+('user2', 'Monika', 'Felka', 'F', '2023-07-02 00:00:00', '2023-07-20 15:53:54', '5192346da94bc84b39b4153465ca62f8e4d00183ad9fc33e7c4731d3c453c9362511bb853479ca03e79f43b7537698e6e2bd4c9a3a69043280247ecccadb67bf', 'cea468940a6b4518e5a37b2a506770d7'),
+('user3', 'Rijndael', 'Lijdorf', 'M', '2023-07-03 00:00:00', '2023-07-20 15:54:36', '589af0be65b4c30c32c7ac4aff9f36f76e903a3938472ace71cb745668b90ffc4824e5747084613fd6321465c682280fc1a5e1b4a5a29e4d9f96ef5c4e58d72d', 'e6bc9442a7e0d9dcf3ecb66c7989fb58'),
+('user4', 'Dixie', 'Boy', 'M', '2023-07-04 00:00:00', '2023-07-20 15:54:54', '9581972ac597c6dbfc28e786e19978b0c083c18df5319c4ea895b1e3989df5a0cacb4bcd08cd4b040708cd835dc7d4e55ecd80271d22e123203519786f88c7ef', '9fe3c9443410052259be52c5086e3253');
 
 --
 -- Indexes for dumped tables
