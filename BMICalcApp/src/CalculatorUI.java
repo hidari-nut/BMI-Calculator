@@ -192,7 +192,7 @@ public class CalculatorUI extends javax.swing.JFrame {
 
     private void jButtonGetRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGetRecActionPerformed
         try {
-            String url = "http://localhost/DistProg/index.php?bmi=" + currentBMI + "&category=" + currentCategory.replace(" ", "+") 
+            String url = "http://oobaya.online/SWMG.php?bmi=" + currentBMI + "&category=" + currentCategory.replace(" ", "+") 
                     + "&height=" + currentHeight + "&weight=" + currentWeight;
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
         } catch (Exception e) {

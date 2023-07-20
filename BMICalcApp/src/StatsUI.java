@@ -190,7 +190,7 @@ public class StatsUI extends javax.swing.JFrame {
     private void jButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateActionPerformed
         // TODO add your handling code here:
         try {
-            ChartUI chart = new ChartUI(listBMIResult, userLogin);
+            ChartUI chart = new ChartUI(listBMIResult, userLogin, this);
 //            chart.setAlwaysOnTop(true);
 //            chart.pack();
 //            chart.setSize(600, 400);

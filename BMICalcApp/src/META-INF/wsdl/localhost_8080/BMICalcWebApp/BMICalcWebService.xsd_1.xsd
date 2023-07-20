@@ -12,6 +12,10 @@
 
 <xs:element name="classifyBMIResponse" type="tns:classifyBMIResponse"/>
 
+<xs:element name="deleteBlock" type="tns:deleteBlock"/>
+
+<xs:element name="deleteBlockResponse" type="tns:deleteBlockResponse"/>
+
 <xs:element name="deleteUser" type="tns:deleteUser"/>
 
 <xs:element name="deleteUserResponse" type="tns:deleteUserResponse"/>
@@ -24,6 +28,10 @@
 
 <xs:element name="insertBMIResultResponse" type="tns:insertBMIResultResponse"/>
 
+<xs:element name="insertBlock" type="tns:insertBlock"/>
+
+<xs:element name="insertBlockResponse" type="tns:insertBlockResponse"/>
+
 <xs:element name="insertUser" type="tns:insertUser"/>
 
 <xs:element name="insertUserResponse" type="tns:insertUserResponse"/>
@@ -31,6 +39,10 @@
 <xs:element name="updateUser" type="tns:updateUser"/>
 
 <xs:element name="updateUserResponse" type="tns:updateUserResponse"/>
+
+<xs:element name="viewBlock" type="tns:viewBlock"/>
+
+<xs:element name="viewBlockResponse" type="tns:viewBlockResponse"/>
 
 <xs:element name="viewBmiResult" type="tns:viewBmiResult"/>
 
@@ -70,19 +82,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="calculateBMI">
-<xs:sequence>
-<xs:element name="height" type="xs:double"/>
-<xs:element name="weight" type="xs:double"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="calculateBMIResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:double" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="viewUser">
 <xs:sequence>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -93,6 +92,19 @@
 <xs:complexType name="viewUserResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="calculateBMI">
+<xs:sequence>
+<xs:element name="height" type="xs:double"/>
+<xs:element name="weight" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="calculateBMIResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -107,23 +119,6 @@
 </xs:complexType>
 
 <xs:complexType name="insertBMIResultResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="updateUser">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="firstName" type="xs:string" minOccurs="0"/>
-<xs:element name="lastName" type="xs:string" minOccurs="0"/>
-<xs:element name="gender" type="xs:string" minOccurs="0"/>
-<xs:element name="dateOfBirth" type="xs:string" minOccurs="0"/>
-<xs:element name="accountMade" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="updateUserResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -153,18 +148,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="classifyBMI">
-<xs:sequence>
-<xs:element name="bmi" type="xs:double"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="classifyBMIResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="checkUserEmail">
 <xs:sequence>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -174,6 +157,73 @@
 <xs:complexType name="checkUserEmailResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBlock">
+<xs:sequence>
+<xs:element name="userEmail" type="xs:string" minOccurs="0"/>
+<xs:element name="targetEmail" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBlockResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUser">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="gender" type="xs:string" minOccurs="0"/>
+<xs:element name="dateOfBirth" type="xs:string" minOccurs="0"/>
+<xs:element name="accountMade" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertBlock">
+<xs:sequence>
+<xs:element name="userEmail" type="xs:string" minOccurs="0"/>
+<xs:element name="targetEmail" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertBlockResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewBlock">
+<xs:sequence>
+<xs:element name="userEmail" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewBlockResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="classifyBMI">
+<xs:sequence>
+<xs:element name="bmi" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="classifyBMIResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
