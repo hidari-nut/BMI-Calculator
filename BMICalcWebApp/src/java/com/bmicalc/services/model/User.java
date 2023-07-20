@@ -4,10 +4,16 @@
  */
 package com.bmicalc.services.model;
 
+import java.security.SecureRandom;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 /**
  *
@@ -141,10 +147,16 @@ public class User extends ConnModel {
 
             //If connection is NOT closed
             if (!ConnModel.connection.isClosed()) {
+                String hashedPassAndSalt = hashPassword(this.password);
+                String[] hashedParts = hashedPassAndSalt.split("~");
+
+                String hashedPassword = hashedParts[0];
+                String salt = hashedParts[1];
+                
+                System.out.println("HashedPass: " + hashedPassword);
+                
                 PreparedStatement sql = (PreparedStatement) ConnModel.connection.prepareStatement("INSERT INTO tuser(email, first_name, last_name, gender, date_of_birth, account_made, password, password_salt) "
                         + "VALUES (?,?,?,?,?,?,?,?)");
-
-                this.setPassword_salt(this.generateSalt());
 
                 sql.setString(1, this.email);
                 sql.setString(2, this.firstName);
@@ -152,8 +164,8 @@ public class User extends ConnModel {
                 sql.setString(4, this.gender);
                 sql.setString(5, this.dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 sql.setString(6, this.accountMade.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                sql.setString(7, this.getPassword());
-                sql.setString(8, this.password_salt);
+                sql.setString(7, hashedPassword);
+                sql.setString(8, salt);
                 sql.executeUpdate();
                 sql.close();
 
@@ -195,9 +207,45 @@ public class User extends ConnModel {
         return null;
     }
 
-    public String generateSalt() {
-        //Will Return Salt
-        return "";
+    private static String toHex(byte[] byteArray) {
+        BigInteger bi = new BigInteger(1, byteArray);
+        String hex = bi.toString(16);
+
+        int paddingLength = (byteArray.length * 2) - hex.length();
+        if (paddingLength > 0) {
+            return String.format("%0" + paddingLength + "d", 0) + hex;
+        } else {
+            return hex;
+        }
+    }
+
+    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
+        byte[] bytes = new byte[hex.length() / 2];
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+        }
+        return bytes;
+    }
+
+    public byte[] generateSalt() throws NoSuchAlgorithmException {
+        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+        byte[] salt = new byte[16];
+        secureRandom.nextBytes(salt);
+        return salt;
+    }
+
+    public String hashPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        int iterations = 100;
+
+        char[] charPass = password.toCharArray();
+        byte[] salt = generateSalt();
+
+        PBEKeySpec spec = new PBEKeySpec(charPass, salt, iterations, 64*8); //64 bytes long
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+
+        byte[] hashedPass = keyFactory.generateSecret(spec).getEncoded();
+
+        return toHex(hashedPass) + "~" + toHex(salt);
     }
 
     public String hashPassword(String password, String password_salt) {
@@ -206,16 +254,36 @@ public class User extends ConnModel {
         return password;
     }
 
+    private boolean checkPassword(String enteredPassword, String storedPassword, String storedSalt)
+            throws NoSuchAlgorithmException, InvalidKeySpecException {
+        int iterations = 100;
+
+        byte[] salt = fromHex(storedSalt);
+        byte[] hash = fromHex(storedPassword);
+
+        PBEKeySpec spec = new PBEKeySpec(enteredPassword.toCharArray(),
+                salt, iterations, hash.length * 8);
+        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] testHash = skf.generateSecret(spec).getEncoded();
+
+        int diff = hash.length ^ testHash.length;
+        for (int i = 0; i < hash.length && i < testHash.length; i++) {
+            diff |= hash[i] ^ testHash[i];
+        }
+        return diff == 0;
+    }
+
     public User checkLogin(String email, String password) {
         try {
             User userLogin = (User) viewData(email);
             String userPass = userLogin.getPassword();
+            String salt = userLogin.getPassword_salt();
 
-            String passwordLogin = userLogin.hashPassword(password, userLogin.getPassword_salt());
+            boolean passwordIsCorrect = checkPassword(password, userPass, salt);
 
             if (userLogin != null) {
                 System.out.println("User Exists");
-                if (userPass.equals(passwordLogin)) {
+                if (passwordIsCorrect) {
                     return userLogin;
                 } else {
                     return new User();

@@ -35,7 +35,7 @@ public class BMICalcWebService {
      */
     @WebMethod(operationName = "insertUser")
     public boolean insertUser(@WebParam(name = "email") String email, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "gender") String gender, @WebParam(name = "dateOfBirth") String dateOfBirth, @WebParam(name = "accountMade") String accountMade, @WebParam(name = "password") String password) {
-        User newUser = new User(email, firstName, lastName, gender, LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("yyyy-MM-dd")), LocalDateTime.parse(accountMade,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), password, "");
+        User newUser = new User(email, firstName, lastName, gender, LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("yyyy-MM-dd")), LocalDateTime.parse(accountMade,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), password, "placeHolder");
         boolean result = newUser.insertData();
         return result;
     }
