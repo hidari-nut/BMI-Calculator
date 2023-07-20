@@ -1,7 +1,6 @@
 
 import classes.User;
 import javax.swing.JOptionPane;
-import java.awt.event.WindowEvent;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -134,7 +133,6 @@ public class LoginUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
         String email = jTextFieldEmail.getText();
         String password = jTextFieldPassword.getText();
@@ -153,13 +151,9 @@ public class LoginUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonloginActionPerformed
 
-
     private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
-        // TODO add your handling code here:
-        RegisterUI regUI = new RegisterUI();
-        regUI.setVisible(true);
-        this.dispose();
-
+        RegisterUI registerUI = new RegisterUI();
+        registerUI.setVisible(true);
     }//GEN-LAST:event_jButtonregisterActionPerformed
 
     /**

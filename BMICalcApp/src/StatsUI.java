@@ -35,13 +35,12 @@ public class StatsUI extends javax.swing.JFrame {
         jButtonHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
-        jLabelUser.setText("<user>");
         jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabelUser.setText("<user>");
 
-        jLabel1.setText("history");
         jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabel1.setText("history");
 
         jTableResult.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jTableResult.setModel(new javax.swing.table.DefaultTableModel(
@@ -65,21 +64,15 @@ public class StatsUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableResult);
 
-        jLabel2.setText("Graph");
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        jLabel2.setText("Graph");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jButtonHome.setText("Home");
         jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHomeActionPerformed(evt);
-            }
-        });
+        jButtonHome.setText("Home");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,15 +113,7 @@ public class StatsUI extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
-        // TODO add your handling code here:
-        MainUI mainUI = new MainUI();
-        mainUI.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonHomeActionPerformed
 
     /**
      * @param args the command line arguments

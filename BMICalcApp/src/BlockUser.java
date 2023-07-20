@@ -34,30 +34,24 @@ public class BlockUser extends javax.swing.JFrame {
         jButtonHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
-        jLabel2.setText("Search User");
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+        jLabel2.setText("Search User");
 
         jTextFieldWeight.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jButtonSearch.setText("Search");
         jButtonSearch.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonSearch.setText("Search");
 
-        jButtonBlock.setText("Block");
         jButtonBlock.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonBlock.setText("Block");
 
         jTextAreaResult.setColumns(20);
         jTextAreaResult.setRows(5);
         jScrollPane1.setViewportView(jTextAreaResult);
 
-        jButtonHome.setText("Return");
         jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHomeActionPerformed(evt);
-            }
-        });
+        jButtonHome.setText("Home");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,15 +89,7 @@ public class BlockUser extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
-        // TODO add your handling code here:
-        ChatUI chatUI = new ChatUI();
-        chatUI.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonHomeActionPerformed
 
     /**
      * @param args the command line arguments
