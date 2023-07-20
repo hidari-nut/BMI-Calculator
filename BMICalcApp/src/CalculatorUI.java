@@ -231,4 +231,5 @@ public class CalculatorUI extends javax.swing.JFrame {
         com.bmicalc.services.BMICalcWebService port = service.getBMICalcWebServicePort();
         return port.insertBMIResult(userEmail, bmi, dateAdded, height, weight);
     }
+
 }
