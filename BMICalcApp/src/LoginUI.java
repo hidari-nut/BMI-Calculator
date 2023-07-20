@@ -1,6 +1,7 @@
 
 import classes.User;
 import javax.swing.JOptionPane;
+import java.awt.event.WindowEvent;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -150,10 +151,11 @@ public class LoginUI extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jButtonloginActionPerformed
-
     private void jButtonregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregisterActionPerformed
-        RegisterUI registerUI = new RegisterUI();
-        registerUI.setVisible(true);
+        // TODO add your handling code here:
+        RegisterUI regUI = new RegisterUI();
+        regUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonregisterActionPerformed
 
     /**

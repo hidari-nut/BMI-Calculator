@@ -43,30 +43,54 @@ public class MainUI extends javax.swing.JFrame {
         jButtonCalculate = new javax.swing.JButton();
         jButtonChat = new javax.swing.JButton();
         jButtonStats = new javax.swing.JButton();
+        jButtonProfile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
         jLabel1.setText("Welcome");
+        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
 
-        jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
         jLabelUser.setText("<user>");
+        jLabelUser.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
 
+        jLabel2.setText("BMI Calculator");
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel2.setText("BMI Calculator");
 
-        jButtonCalculate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonCalculate.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\CalcLogo12.png")); // NOI18N
         jButtonCalculate.setText("Calculate");
+        jButtonCalculate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCalculateActionPerformed(evt);
+            }
+        });
 
-        jButtonChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonChat.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\ChatLogo.png")); // NOI18N
         jButtonChat.setText("Chat");
+        jButtonChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonChatActionPerformed(evt);
+            }
+        });
 
-        jButtonStats.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButtonStats.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\StatsLogo.png")); // NOI18N
         jButtonStats.setText("Stats");
+        jButtonStats.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStatsActionPerformed(evt);
+            }
+        });
+
+        jButtonProfile.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\ProfileLogo.png")); // NOI18N
+        jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProfileActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,18 +113,21 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelUser)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonProfile)
+                .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabelUser))
-                .addGap(41, 41, 41)
+                    .addComponent(jLabelUser)
+                    .addComponent(jButtonProfile))
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonChat)
@@ -109,7 +136,36 @@ public class MainUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalculateActionPerformed
+        // TODO add your handling code here:
+        CalculatorUI calcUI = new CalculatorUI();
+        calcUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonCalculateActionPerformed
+
+    private void jButtonChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChatActionPerformed
+        // TODO add your handling code here:
+        ChatUI chatUI = new ChatUI();
+        chatUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonChatActionPerformed
+
+    private void jButtonStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatsActionPerformed
+        StatsUI statsUI = new StatsUI();
+        statsUI.setVisible(true);
+        this.dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonStatsActionPerformed
+
+    private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
+        // TODO add your handling code here:
+        EditUI editUI = new EditUI();
+        editUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +205,7 @@ public class MainUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCalculate;
     private javax.swing.JButton jButtonChat;
+    private javax.swing.JButton jButtonProfile;
     private javax.swing.JButton jButtonStats;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
