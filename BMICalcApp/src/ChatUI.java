@@ -133,19 +133,24 @@ public class ChatUI extends javax.swing.JFrame implements Runnable{
 
         jTextFieldChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
 
-        jButtonSend.setText("Send");
         jButtonSend.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonSend.setText("Send");
+        jButtonSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSendActionPerformed(evt);
+            }
+        });
 
-        jButtonHome.setText("Home");
         jButtonHome.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        jButtonHome.setText("Home");
         jButtonHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHomeActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Chat Room");
         jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
+        jLabel1.setText("Chat Room");
 
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 18)); // NOI18N
         jLabel2.setText("Chat Room");

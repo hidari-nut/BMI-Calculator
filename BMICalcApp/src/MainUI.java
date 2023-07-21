@@ -59,7 +59,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel2.setText("BMI Calculator");
 
         jButtonCalculate.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonCalculate.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\CalcLogo12.png")); // NOI18N
+        jButtonCalculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/CalcLogo12.png"))); // NOI18N
         jButtonCalculate.setText("Calculate");
         jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +68,7 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         jButtonChat.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonChat.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\ChatLogo.png")); // NOI18N
+        jButtonChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/ChatLogo.png"))); // NOI18N
         jButtonChat.setText("Chat");
         jButtonChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         jButtonStats.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButtonStats.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\StatsLogo.png")); // NOI18N
+        jButtonStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/StatsLogo.png"))); // NOI18N
         jButtonStats.setText("Stats");
         jButtonStats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +85,7 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonProfile.setIcon(new javax.swing.ImageIcon("E:\\Download\\College\\Distributed Programming\\PROJECT UAS\\BMI-Calculator\\Asset\\ProfileLogo.png")); // NOI18N
+        jButtonProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/ProfileLogo.png"))); // NOI18N
         jButtonProfile.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,7 +127,7 @@ public class MainUI extends javax.swing.JFrame {
                             .addComponent(jLabelUser))))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonChat)
